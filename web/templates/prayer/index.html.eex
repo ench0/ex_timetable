@@ -1,0 +1,41 @@
+    <style>
+table {
+    background-color: linen;
+}
+
+td, th {
+    background: #fff;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+} 
+</style>
+
+
+<table>
+    <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Method</th>
+        <th>Calc</th>
+    </tr>
+    <%= for prayer <- @prayers do %>
+        <% if prayer["minute"] == "0" do
+                minute = "00"
+                else
+                    minute = prayer["minute"]
+            end
+        %>
+        <tr>
+            <td><%= prayer["id"] %></td>
+            <td><%= prayer["name"] %></td>
+            <td><%= prayer["method"] %></td>
+            <td><%= prayer["hour"] %> : <%= minute %></td>
+        </tr>
+<% end %>
+</table>
+
+
+    
+    <%= link to: "/edit/new", class: "btn-floating btn-large waves-effect waves-light red" do %>
+        <i class="material-icons">edit</i>
+    <% end %>
