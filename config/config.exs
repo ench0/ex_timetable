@@ -8,7 +8,7 @@ use Mix.Config
 # Configures the endpoint
 config :timetable, Timetable.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "2fVPmNWfMMF6lNDfLzieBC8Qc8pSGiYIuhUwgFls35+nGzY96yAStQKA2o6DkHgi",
+  secret_key_base: "KD+R54N53l7fqrmE+PXJzFm8eC89JC4GbiTrGeMP6T1J5RK2FFcgNKLuWj+6Np3P",
   render_errors: [view: Timetable.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Timetable.PubSub,
            adapter: Phoenix.PubSub.PG2]

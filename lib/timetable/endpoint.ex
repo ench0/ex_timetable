@@ -36,7 +36,7 @@ defmodule Timetable.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_timetable_key",
-    signing_salt: "P1GjmP8L"
+    signing_salt: "KavK3wp3"
 
   plug Timetable.Router
 end
