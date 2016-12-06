@@ -38,12 +38,12 @@ def create(conn, _params) do
       [fajr, dhuhr, asr, maghrib, isha] = prayerjamaah
 
       #modify prayerjamaah
-      prayerjamaah_new = IO.inspect conn.params["prayerjamaah"]
-      fajr = %{"id" => 1, "name" => "fajr", "method" => prayerjamaah_new["fajr_method"], "hour" => prayerjamaah_new["fajr_hour"], "minute" => prayerjamaah_new["fajr_minute"]}
-      dhuhr = %{"id" => 2, "name" => "dhuhr", "method" => prayerjamaah_new["dhuhr_method"], "hour" => prayerjamaah_new["dhuhr_hour"], "minute" => prayerjamaah_new["dhuhr_minute"]}
-      asr = %{"id" => 3, "name" => "asr", "method" => prayerjamaah_new["asr_method"], "hour" => prayerjamaah_new["asr_hour"], "minute" => prayerjamaah_new["asr_minute"]}
-      maghrib = %{"id" => 4, "name" => "maghrib", "method" => prayerjamaah_new["maghrib_method"], "hour" => prayerjamaah_new["maghrib_hour"], "minute" => prayerjamaah_new["maghrib_minute"]}
-      isha = %{"id" => 5, "name" => "isha", "method" => prayerjamaah_new["isha_method"], "hour" => prayerjamaah_new["isha_hour"], "minute" => prayerjamaah_new["isha_minute"]}
+      #prayerjamaah_new = IO.inspect conn.params["prayerjamaah"]
+      #fajr = %{"id" => 1, "name" => "fajr", "method" => prayerjamaah_new["fajr_method"], "hour" => prayerjamaah_new["fajr_hour"], "minute" => prayerjamaah_new["fajr_minute"]}
+      #dhuhr = %{"id" => 2, "name" => "dhuhr", "method" => prayerjamaah_new["dhuhr_method"], "hour" => prayerjamaah_new["dhuhr_hour"], "minute" => prayerjamaah_new["dhuhr_minute"]}
+      #asr = %{"id" => 3, "name" => "asr", "method" => prayerjamaah_new["asr_method"], "hour" => prayerjamaah_new["asr_hour"], "minute" => prayerjamaah_new["asr_minute"]}
+      #maghrib = %{"id" => 4, "name" => "maghrib", "method" => prayerjamaah_new["maghrib_method"], "hour" => prayerjamaah_new["maghrib_hour"], "minute" => prayerjamaah_new["maghrib_minute"]}
+      #isha = %{"id" => 5, "name" => "isha", "method" => prayerjamaah_new["isha_method"], "hour" => prayerjamaah_new["isha_hour"], "minute" => prayerjamaah_new["isha_minute"]}
 
       #post prayerjamaah
       prayerjamaah = [fajr, dhuhr, asr, maghrib, isha]
@@ -57,10 +57,10 @@ def create(conn, _params) do
       IO.puts "-----"
       IO.inspect prayerjamaah
       IO.puts "-----"
-      IO.inspect prayerjamaah_new["fajr_method"]
+      #IO.inspect prayerjamaah_new["fajr_method"]
       #IO.inspect fajr
       IO.puts "+++++ppp"
-      redirect conn, to: "/prayers"
+      redirect conn, to: prayer_path(conn, :index)
 end
 
 
