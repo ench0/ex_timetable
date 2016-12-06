@@ -21,10 +21,10 @@ defmodule Timetable.Router do
 
   scope "/api", Timetable do
     pipe_through :api
-    resources "/prayers", PrayerController
+    resources "/prayers", PrayerApiController
   end
 
-  scope "/edit", Timetable do
+  scope "/prayers", Timetable do
     pipe_through :browser
     resources "/", PrayerController
   end

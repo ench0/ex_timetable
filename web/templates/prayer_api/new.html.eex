@@ -1,0 +1,71 @@
+<!--<ul>
+    <li><%= @fajr["id"] %>. Prayer: <%= @fajr["prayer"] %>, Method: <%= @fajr["method"] %>, Number: <%= @fajr["number"] %></li>
+    <li><%= @dhuhr["id"] %>. Prayer: <%= @dhuhr["prayer"] %>, Method: <%= @dhuhr["method"] %>, Number: <%= @dhuhr["number"] %></li>
+    <li><%= @fajr["id"] %>. Prayer: <%= @fajr["prayer"] %>, Method: <%= @fajr["method"] %>, Number: <%= @fajr["number"] %></li>
+    <li><%= @fajr["id"] %>. Prayer: <%= @fajr["prayer"] %>, Method: <%= @fajr["method"] %>, Number: <%= @fajr["number"] %></li>
+    <li><%= @fajr["id"] %>. Prayer: <%= @fajr["prayer"] %>, Method: <%= @fajr["method"] %>, Number: <%= @fajr["number"] %></li>
+</ul>-->
+
+<style>
+table {
+    background-color: linen;
+}
+
+td, th {
+    background: #fff;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+} 
+</style>
+
+
+<%= form_for @conn, prayer_path(@conn, :create), [as: :prayers], fn f -> %>
+    <table>
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Method</th>
+            <th>Calc</th>
+        </tr>
+        <tr>
+            <%# fajr %>
+            <td>1</td>
+            <td>Fajr</td>
+            <td><%= select(f, :fajr_method, ["Fixed time": "fixed", "Before next": "beforenext", "After this": "afterthis"], value: @fajr["method"]) %></td>
+            <td><%= select(f, :fajr_hour,[hour: 0..23], value: @fajr["hour"]) %> : <%= select(f, :fajr_minute,[minute: 0..59], value: @fajr["minute"]) %></td>
+        </tr>
+        <tr>
+            <%# dhuhr %>
+            <td>2</td>
+            <td>Dhuhr</td>
+            <td><%= select(f, :dhuhr_method, ["Fixed time": "fixed", "Before next": "beforenext", "After this": "afterthis"], value: @dhuhr["method"]) %></td>
+            <td><%= select(f, :dhuhr_hour,[hour: 0..23], value: @dhuhr["hour"]) %> : <%= select(f, :dhuhr_minute,[minute: 0..59], value: @dhuhr["minute"]) %></td>
+        </tr>
+        <tr>
+            <%# asr %>
+            <td>3</td>
+            <td>Asr</td>
+            <td><%= select(f, :asr_method, ["Fixed time": "fixed", "Before next": "beforenext", "After this": "afterthis"], value: @asr["method"]) %></td>
+            <td><%= select(f, :asr_hour,[hour: 0..23], value: @asr["hour"]) %> : <%= select(f, :asr_minute,[minute: 0..59], value: @asr["minute"]) %></td>
+        </tr>
+        <tr>
+            <%# maghrib %>
+            <td>4</td>
+            <td>Maghrib</td>
+            <td><%= select(f, :maghrib_method, ["Fixed time": "fixed", "Before next": "beforenext", "After this": "afterthis"], value: @maghrib["method"]) %></td>
+            <td><%= select(f, :maghrib_hour,[hour: 0..23], value: @maghrib["hour"]) %> : <%= select(f, :maghrib_minute,[minute: 0..59], value: @maghrib["minute"]) %></td>
+        </tr>
+        <tr>
+            <%# isha %>
+            <td>5</td>
+            <td>Isha</td>
+            <td><%= select(f, :isha_method, ["Fixed time": "fixed", "Before next": "beforenext", "After this": "afterthis"], value: @isha["method"]) %></td>
+            <td><%= select(f, :isha_hour,[hour: 0..23], value: @isha["hour"]) %> : <%= select(f, :isha_minute,[minute: 0..59], value: @isha["minute"]) %></td>
+        </tr>
+
+
+    </table>
+
+
+  <%= submit "Submit" %>
+<% end %>
