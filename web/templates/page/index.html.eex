@@ -1,36 +1,60 @@
-<div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}", name: "Phoenix!" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
-</div>
+<div class="header">
+  <div id="date-time">
+    <p id="date">date</p>
+    <p id="days-year">doy</p>
 
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
-      </li>
-      <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
-      </li>
-    </ul>
+    <p id="time">time</p>
   </div>
 </div>
+
+
+
+<div class="col-left">
+  <h3>Prayers</h3>
+  <ul id="prayers">
+    <% prayer_names = ["fajr", "shurooq", "dhuhr", "asr", "maghrib", "isha"]
+       Enum.each(prayer_names,  &IO.inspect/1) %>
+    <%= for prayer <- prayer_names do %>
+      <li id="<%= prayer %>"><span class="prayer-name"><%= prayer %></span><span id="prayer-time-<%= prayer %>"></span></li>
+    <% end %>
+  </ul>
+  <h3><span id="pending-name"></span></h3>
+  <p id="timetoprayer"></p>
+  <p id="timetofast"></p>
+</div>
+
+
+
+<div class="col-right">
+  <h3>Jama'ah</h3>
+  <ul id="jamaah">
+    <% prayer_names = [" ", "fajr", "dhuhr", "asr", "maghrib", "isha"]
+       Enum.each(prayer_names,  &IO.inspect/1) %>
+    <%= for prayer <- prayer_names do %>
+    <li id="<%= prayer %>"><span class="jamaah-name"><%= prayer %></span><span id="jamaah-time-<%= prayer %>"></span></li>
+
+ <!--   <li id="jamaah-head"><span class="prayer-name">Jamaah:</span><span id="jamaah-time">&nbsp;</span></li>
+    <li id="fajr"><span class="prayer-name">Fajr:</span><span id="fajr-jamaah"></span></li>
+    <li id="dhuhr"><span class="prayer-name">Dhuhr:</span><span id="dhuhr-jamaah"></span></li>
+    <li id="asr"><span class="prayer-name">Asr:</span><span id="asr-jamaah"></span></li>
+    <li id="maghrib"><span class="prayer-name">Maghrib:</span><span id="maghrib-jamaah"></span></li>
+    <li id="isha"><span class="prayer-name">Isha:</span><span id="isha-jamaah"></span></li>-->
+    <% end %>
+  </ul>
+  <div style="display:block;">
+    <% for prayer <- @prayerjamaah do %>
+      <span id="<%= prayer["name"] %>-method"><%= prayer["method"] %></span> <span id="<%= prayer["name"] %>-number"><%= prayer["jamaah_hour_calc"] %>:<%= prayer["jamaah_minute_calc"] %></span>
+    <% end %>
+
+    <%= for prayer <- @prayerjamaah do %>
+      <span id="<%= prayer["name"] %>-offset"><%= prayer["jamaah_offset"] %></span>
+    <% end %>
+
+  </div>
+  <a href="<%= static_path(@conn, "/js/db/prayers.json") %>">jamaah_json</a>
+</div>
+
+
+<script type="text/javascript">
+</script>
+

@@ -14,7 +14,7 @@ defmodule Timetable.PrayerController do
     # # IO.inspect asr["method"]
     # IO.puts "+++++"
 
-
+    # Phoenix.CodeReloader.reload!(:timetable)
     render conn, prayerjamaah: prayerjamaah
   end
 
@@ -73,12 +73,19 @@ defmodule Timetable.PrayerController do
       maghrib_jamaah_time = jamaah_time(prayerjamaah_new["maghrib_hour"], prayerjamaah_new["maghrib_minute"], maghrib_prayer_hour, maghrib_prayer_minute, prayerjamaah_new["maghrib_method"], isha_prayer_hour, isha_prayer_minute)
       isha_jamaah_time = jamaah_time(prayerjamaah_new["isha_hour"], prayerjamaah_new["isha_minute"], isha_prayer_hour, isha_prayer_minute, prayerjamaah_new["isha_method"], isha_prayer_hour, isha_prayer_minute)
 
+      #use func to calculate jamaah time offset in minutes
+      fajr_jamaah_offset = jamaah_offset(prayerjamaah_new["fajr_hour"], prayerjamaah_new["fajr_minute"], fajr_prayer_hour, fajr_prayer_minute, prayerjamaah_new["fajr_method"], shurooq_prayer_hour, shurooq_prayer_minute)
+      dhuhr_jamaah_offset = jamaah_offset(prayerjamaah_new["dhuhr_hour"], prayerjamaah_new["dhuhr_minute"], dhuhr_prayer_hour, dhuhr_prayer_minute, prayerjamaah_new["dhuhr_method"], asr_prayer_hour, asr_prayer_minute)
+      asr_jamaah_offset = jamaah_offset(prayerjamaah_new["asr_hour"], prayerjamaah_new["asr_minute"], asr_prayer_hour, asr_prayer_minute, prayerjamaah_new["asr_method"], maghrib_prayer_hour, maghrib_prayer_minute)
+      maghrib_jamaah_offset = jamaah_offset(prayerjamaah_new["maghrib_hour"], prayerjamaah_new["maghrib_minute"], maghrib_prayer_hour, maghrib_prayer_minute, prayerjamaah_new["maghrib_method"], isha_prayer_hour, isha_prayer_minute)
+      isha_jamaah_offset = jamaah_offset(prayerjamaah_new["isha_hour"], prayerjamaah_new["isha_minute"], isha_prayer_hour, isha_prayer_minute, prayerjamaah_new["isha_method"], fajr_prayer_hour, fajr_prayer_minute)
+ 
       #construct prayer jsons
-      fajr = %{"id" => 1, "name" => "fajr", "method" => prayerjamaah_new["fajr_method"], "jamaah_hour_calc" => prayerjamaah_new["fajr_hour"], "jamaah_minute_calc" => prayerjamaah_new["fajr_minute"], "prayer_hour" => fajr_prayer_hour, "prayer_minute" => fajr_prayer_minute, "jamaah_time" => fajr_jamaah_time}
-      dhuhr = %{"id" => 2, "name" => "dhuhr", "method" => prayerjamaah_new["dhuhr_method"], "jamaah_hour_calc" => prayerjamaah_new["dhuhr_hour"], "jamaah_minute_calc" => prayerjamaah_new["dhuhr_minute"], "prayer_hour" => dhuhr_prayer_hour, "prayer_minute" => dhuhr_prayer_minute, "jamaah_time" => dhuhr_jamaah_time}
-      asr = %{"id" => 3, "name" => "asr", "method" => prayerjamaah_new["asr_method"], "jamaah_hour_calc" => prayerjamaah_new["asr_hour"], "jamaah_minute_calc" => prayerjamaah_new["asr_minute"], "prayer_hour" => asr_prayer_hour, "prayer_minute" => asr_prayer_minute, "jamaah_time" => asr_jamaah_time}
-      maghrib = %{"id" => 4, "name" => "maghrib", "method" => prayerjamaah_new["maghrib_method"], "jamaah_hour_calc" => prayerjamaah_new["maghrib_hour"], "jamaah_minute_calc" => prayerjamaah_new["maghrib_minute"], "prayer_hour" => maghrib_prayer_hour, "prayer_minute" => maghrib_prayer_minute, "jamaah_time" => maghrib_jamaah_time}
-      isha = %{"id" => 5, "name" => "isha", "method" => prayerjamaah_new["isha_method"], "jamaah_hour_calc" => prayerjamaah_new["isha_hour"], "jamaah_minute_calc" => prayerjamaah_new["isha_minute"], "prayer_hour" => isha_prayer_hour, "prayer_minute" => isha_prayer_minute, "jamaah_time" => isha_jamaah_time}
+      fajr = %{"id" => 1, "name" => "fajr", "method" => prayerjamaah_new["fajr_method"], "jamaah_hour_calc" => prayerjamaah_new["fajr_hour"], "jamaah_minute_calc" => prayerjamaah_new["fajr_minute"], "prayer_hour" => fajr_prayer_hour, "prayer_minute" => fajr_prayer_minute, "jamaah_time" => fajr_jamaah_time, "jamaah_offset" => fajr_jamaah_offset}
+      dhuhr = %{"id" => 2, "name" => "dhuhr", "method" => prayerjamaah_new["dhuhr_method"], "jamaah_hour_calc" => prayerjamaah_new["dhuhr_hour"], "jamaah_minute_calc" => prayerjamaah_new["dhuhr_minute"], "prayer_hour" => dhuhr_prayer_hour, "prayer_minute" => dhuhr_prayer_minute, "jamaah_time" => dhuhr_jamaah_time, "jamaah_offset" => dhuhr_jamaah_offset}
+      asr = %{"id" => 3, "name" => "asr", "method" => prayerjamaah_new["asr_method"], "jamaah_hour_calc" => prayerjamaah_new["asr_hour"], "jamaah_minute_calc" => prayerjamaah_new["asr_minute"], "prayer_hour" => asr_prayer_hour, "prayer_minute" => asr_prayer_minute, "jamaah_time" => asr_jamaah_time, "jamaah_offset" => asr_jamaah_offset}
+      maghrib = %{"id" => 4, "name" => "maghrib", "method" => prayerjamaah_new["maghrib_method"], "jamaah_hour_calc" => prayerjamaah_new["maghrib_hour"], "jamaah_minute_calc" => prayerjamaah_new["maghrib_minute"], "prayer_hour" => maghrib_prayer_hour, "prayer_minute" => maghrib_prayer_minute, "jamaah_time" => maghrib_jamaah_time, "jamaah_offset" => maghrib_jamaah_offset}
+      isha = %{"id" => 5, "name" => "isha", "method" => prayerjamaah_new["isha_method"], "jamaah_hour_calc" => prayerjamaah_new["isha_hour"], "jamaah_minute_calc" => prayerjamaah_new["isha_minute"], "prayer_hour" => isha_prayer_hour, "prayer_minute" => isha_prayer_minute, "jamaah_time" => isha_jamaah_time, "jamaah_offset" => isha_jamaah_offset}
 
       #post prayerjamaah
       prayerjamaah = [fajr, dhuhr, asr, maghrib, isha]
@@ -98,14 +105,6 @@ defmodule Timetable.PrayerController do
   end
 
 
-
-  defp filejamaah() do
-    Path.join(:code.priv_dir(:timetable), "static/db/jamaah.json")
-  end
-
-  defp fileprayers() do
-    Path.join(:code.priv_dir(:timetable), "static/db/prayers.json")
-  end
 
   defp jamaah_time(jhour, jminute, phour, pminute, method, nexthour, nextminute) do
     #jhour <> ":" <> jminute <> " " <> phour <> ":" <> pminute <> " " <> method <> " " <> nexthour <> ":" <> nextminute
@@ -132,8 +131,43 @@ defmodule Timetable.PrayerController do
     end
   end
 
+
+
+
+  defp jamaah_offset(jhour, jminute, phour, pminute, method, nexthour, nextminute) do
+     
+    case method do
+      "beforenext" ->
+        next_prayer_minutes =  String.to_integer(nexthour)*60 + String.to_integer(nextminute)
+        current_prayer_minutes =  String.to_integer(phour)*60 + String.to_integer(pminute)
+        jamaah_calc_minutes =  String.to_integer(jhour)*60 + String.to_integer(jminute)
+        offset = next_prayer_minutes - current_prayer_minutes - jamaah_calc_minutes
+      "fixed" ->
+        current_prayer_minutes =  String.to_integer(phour)*60 + String.to_integer(pminute)
+        jamaah_calc_minutes = String.to_integer(jhour)*60 + String.to_integer(jminute)
+        offset = jamaah_calc_minutes - current_prayer_minutes
+      "afterthis" ->
+        offset = String.to_integer(jhour)*60 + String.to_integer(jminute)
+    end
+  end
+
+
+
+
   def remove_zero(arg) do
     Regex.replace(~r/0/, arg, "")#removes "0" from HH
   end
+
+
+
+  defp filejamaah() do
+    Path.join(:code.priv_dir(:timetable), "static/js/db/jamaah.json")
+  end
+
+  defp fileprayers() do
+    Path.join(:code.priv_dir(:timetable), "static/js/db/prayers.json")
+  end
+
+
 
 end

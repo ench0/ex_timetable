@@ -11,7 +11,8 @@ config :timetable, Timetable.Endpoint,
   secret_key_base: "KD+R54N53l7fqrmE+PXJzFm8eC89JC4GbiTrGeMP6T1J5RK2FFcgNKLuWj+6Np3P",
   render_errors: [view: Timetable.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Timetable.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+           adapter: Phoenix.PubSub.PG2]#,
+  # reloadable_compilers: [:gettext, :phoenix, :elixir]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -21,3 +22,4 @@ config :logger, :console,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
+  

@@ -2,6 +2,20 @@ defmodule Timetable.PageController do
   use Timetable.Web, :controller
 
   def index(conn, _params) do
-    render conn, "index.html"
+    prayerjamaah = File.read!(filejamaah) |> Poison.decode!()
+
+    # [fajr, dhuhr, asr, maghrib, isha] = prayerjamaah
+    # IO.puts "+++++"
+    # IO.inspect prayerjamaah
+    # # IO.inspect asr["method"]
+    # IO.puts "+++++"
+
+    render conn, "index.html", prayerjamaah: prayerjamaah
   end
+
+  defp filejamaah() do
+    Path.join(:code.priv_dir(:timetable), "static/js/db/jamaah.json")
+  end
+
 end
+

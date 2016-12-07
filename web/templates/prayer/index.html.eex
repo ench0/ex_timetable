@@ -17,6 +17,7 @@ td, th {
         <th>Name</th>
         <th>Method</th>
         <th>Calc</th>
+        <th>Offset</th>
         <th>Prayer</th>
         <th>Jamaah</th>
     </tr>
@@ -26,10 +27,11 @@ td, th {
             <td><%= prayer["name"] %></td>
             <td><%= prayer["method"] %></td>
             <td><%= prayer["jamaah_hour_calc"] %>:<%= prayer["jamaah_minute_calc"] %></td>
+            <td><%= prayer["jamaah_offset"] %> min</td>
             <td><%= prayer["prayer_hour"] %>:<%= prayer["prayer_minute"] %></td>
             <td><%= prayer["jamaah_time"]  %></td>
         </tr>
-<% end %>
+    <% end %>
 </table>
 
 
