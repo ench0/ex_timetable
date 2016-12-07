@@ -1,7 +1,0 @@
-[
-    { "id": 1, "name": "fajr", "method": "beforenext", "hour": "0", "minute": "20" },
-    { "id": 2, "name": "dhuhr", "method": "fixed", "hour": "12", "minute": "35" },
-    { "id": 3, "name": "asr", "method": "afterthis", "hour": "0", "minute": "15" },
-    { "id": 4, "name": "maghrib", "method": "afterthis", "hour": "0", "minute": "10" },
-    { "id": 5, "name": "isha", "method": "fixed", "hour": "19", "minute": "0" }
-]

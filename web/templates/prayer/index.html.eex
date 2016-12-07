@@ -17,55 +17,17 @@ td, th {
         <th>Name</th>
         <th>Method</th>
         <th>Calc</th>
-        <th>Jamaah Time</th>
+        <th>Prayer</th>
+        <th>Jamaah</th>
     </tr>
     <%= for prayer <- @prayerjamaah do %>
-        <% if prayer["minute"] == "0" do
-                minute = "00"
-                else minute = prayer["minute"]
-            end
-        %>
-
-        <% case prayer["method"] do
-                "fixed" ->
-                    efftime = prayer["hour"] <> " : " <> minute
-                "beforenext" ->
-                    efftime = "x - " <> prayer["hour"] <> " : " <> minute
-                "afterthis" ->
-                    efftime = "x + " <> prayer["hour"] <> " : " <> minute
-                "null" ->
-                    efftime = "error"
-            end
-        %>
-
-        <% case prayer["method"] do
-            "fixed" ->
-                efftime = prayer["hour"] <> " : " <> minute
-            "beforenext" ->
-                totalminutes =  String.to_integer(prayer["hour"]) * 60 + String.to_integer(prayer["minute"])
-                #nexttotalminutes = String.to_integer(String.slice(prayer, 0,2)) * 60 + String.to_integer(String.slice(@shurooq_prayer, 3,2))
-                nexttotalminutes = String.to_integer(prayer["hour"]) * 60 + String.to_integer(prayer["minute"])
-                hours = div(nexttotalminutes - totalminutes, 60)
-                minutes = rem(nexttotalminutes - totalminutes, 60)
-                efftime = Integer.to_string(hours) <> ":" <> Integer.to_string(minutes)
-                #efftime = Integer.to_string(nexttotalminutes)
-            "afterthis" ->
-                #efftime = "x + " <> hour <> " : " <> minute
-        end %>
-
-
-        <% if prayer["minute"] == "0" do
-                minute = "00"
-                else
-                    minute = prayer["minute"]
-            end
-        %>
         <tr>
             <td><%= prayer["id"] %></td>
             <td><%= prayer["name"] %></td>
             <td><%= prayer["method"] %></td>
-            <td><%= prayer["hour"] %> : <%= minute %></td>
-            <td><%= efftime %></td>
+            <td><%= prayer["jamaah_hour_calc"] %>:<%= prayer["jamaah_minute_calc"] %></td>
+            <td><%= prayer["prayer_hour"] %>:<%= prayer["prayer_minute"] %></td>
+            <td><%= prayer["jamaah_time"]  %></td>
         </tr>
 <% end %>
 </table>
