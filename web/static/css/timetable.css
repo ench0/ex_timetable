@@ -1,0 +1,276 @@
+/* Space out content a bit */
+html {
+    height: 100%;
+    margin:0; padding:0;
+}
+
+body, form, ul, table {
+    width: 100%;
+    /*height: 100% !important;*/
+    position: relative;
+    /*min-width:1280px;*/
+   overflow-y: hidden;
+   overflow-x: hidden; /* hides the horizontal scroll bar */
+   margin:0; padding:0;
+}
+
+.container-main {
+    position:absolute;
+    top:0;
+    left: 0;
+    /*width:100%;
+    height: 56.25%;
+    min-width:1280px;
+    min-height:720px;*/
+    width:1280px;
+    height:720px;
+    background: #e5e5e5;
+}
+
+.header {
+    position:absolute;
+    top:2;
+    left: 0;
+    width: 1280px;
+    height: 200px;
+    background: #ffffee;
+}
+.col-left {
+    position:absolute;
+    top:200px;
+    left: 0;
+    width: 560px;
+    height: 480px;
+    background: #eeffff;
+    padding: 20px;
+}
+.col-right {
+    position:absolute;
+    top:200px;
+    left: 600px;
+    width: 640px;
+    height: 480px;
+    background: #ffeeff;
+    padding: 20px;
+}
+
+
+
+
+
+
+
+/* Phoenix flash messages */
+.alert:empty { display: none; }
+
+/* Phoenix inline forms in links and buttons */
+form.link, form.button {
+  display: inline;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+.logo {
+  width: 519px;
+  height: 71px;
+  display: inline-block;
+  margin-bottom: 1em;
+  background-image: url("/images/phoenix.png");
+  background-size: 519px 71px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 35px 0;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+/* This file is for your main application css. */
+
+/*# sourceMappingURL=app.css.map*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+/*
+	background:#333;color:#e9e9e9;
+	font-family: sans-serif;
+	line-height: 150%;
+*/
+background:#e9e9cc url('/images/timetable-bg.png');
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+ ul#prayers, ul#jamaah {
+	 list-style-type: none;
+	 margin: 0;
+	 padding: 0;
+	 line-height: 150%;
+	 width: 100%;
+ }
+  ul#prayers li, ul#jamaah li {
+	 width: 100%;
+	 background: #efefef;
+	 padding: 5px;
+	 line-height: 28px;
+ 	 height: 28px; 
+margin:5px 0;
+ }
+ span.prayer-name,  span.jamaah-name {
+	 display: block;
+	 width: 80%;
+	 float:left;
+	 padding-left:1%;
+	 text-transform: uppercase;
+ }
+ span.prayer-time,  span.jamaah-time {
+	 display: inline;
+/* 	 float:left; */
+	 text-align: right;
+ }
+
+#date-time {
+  position: absolute;
+  top: 10px;
+  left:10px;
+  width:240px;
+  height: 180px;
+  background: #ccc;
+}
+
+ #date {
+	 font-size: 75%;
+	 	 line-height: 120%;
+	text-align: center;
+ color:#fff;
+ padding:10px 0 0;
+ }
+ #days-year {
+	 font-size: 75%;
+	 	 line-height: 120%;
+	text-align: center;
+ color:#fff;
+ padding:10px 0 20px 0;
+ }
+
+#time {
+ 	font-family: 'Lucida Sans Mono', monospace; 
+	font-size: 250%;
+		text-align: center;
+ color:#fff;
+ text-shadow: 0 0 2px #000;
+ padding:0;
+ margin:0;
+}
+
+#timetoprayer {
+/* 	font-family: monospace; */
+	font-size: 120%;
+	/*float: right;*/
+	color:#000;
+}
+#next-name, #next-fast {
+/* 	font-family: monospace; */
+	font-size: 120%;
+	color: #fff;
+	/*float: left;*/
+	text-transform: uppercase;
+	font-variant: small-caps;
+	text-align: left;
+}
+
+#timetofast {
+/* 	font-family: monospace; */
+	font-size: 150%;
+	 color:#000;
+	 display: inline-block;
+	 	min-width:30%;
+
+}
+
+li.next {
+	color: #E86D3C;
+	font-weight: bold;
+}
+
+li.passed {
+	color: #ccc;
+}
+
+span.alert {
+	color: #ff6666;
+}
+
+h3 {
+	font-size: 16px;
+	text-transform: uppercase;
+	padding: 0;
+	text-align: center;
+}
+p {
+	line-height: 100%;
+}
+
+footer p {
+	padding:20px;
+	font-size: 75%;
+	text-align: center;
+	text-transform: uppercase;
+}

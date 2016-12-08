@@ -1,0 +1,1 @@
+[{"name":"fajr","minute":"20","method":"beforenext","id":1,"hour":"0"},{"name":"dhuhr","minute":"35","method":"fixed","id":2,"hour":"12"},{"name":"asr","minute":"15","method":"afterthis","id":3,"hour":"0"},{"name":"maghrib","minute":"10","method":"afterthis","id":4,"hour":"0"},{"name":"isha","minute":"0","method":"fixed","id":5,"hour":"19"}]
