@@ -133,14 +133,17 @@ function timeDef(nextDay) {
 // var ishaJamaahStr = now.year()+'-'+(now.month()+1)+'-'+now.date()+' '+ishaJamaahType[1];
 // var ishaJamaah = moment(ishaJamaahStr,"YYYY-M-D hh:mm");
 
-var fajrJamaahOffset = document.getElementById("fajr-method").innerText;
+var fajrJamaahOffset = document.getElementById("fajr-offset").innerText;
+var dhuhrJamaahOffset = document.getElementById("dhuhr-offset").innerText;
+var asrJamaahOffset = document.getElementById("asr-offset").innerText;
+var maghribJamaahOffset = document.getElementById("maghrib-offset").innerText;
+var ishaJamaahOffset = document.getElementById("isha-offset").innerText;
 
-
-var fajrJamaah = "";
-var dhuhrJamaah = "";
-var asrJamaah = "";
-var maghribJamaah = "";
-var ishaJamaah = "";
+var fajrJamaah = moment(fajrTime).add(fajrJamaahOffset, 'minutes');
+var dhuhrJamaah = moment(dhuhrTime).add(dhuhrJamaahOffset, 'minutes');
+var asrJamaah = moment(asrTime).add(asrJamaahOffset, 'minutes');
+var maghribJamaah = moment(maghribTime).add(maghribJamaahOffset, 'minutes');
+var ishaJamaah = moment(ishaTime).add(ishaJamaahOffset, 'minutes');
 // // console.log(fajrJamaah.format('HH:mm'))
 // console.log(shurooqTime.format('HH:mm'))
 // console.log(dhuhrJamaah.format('HH:mm'))

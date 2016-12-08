@@ -111,10 +111,18 @@ defmodule Timetable.PrayerController do
      
     case method do
       "beforenext" ->
-        total = String.to_integer(nexthour)*60 + String.to_integer(nextminute) - String.to_integer(jhour)*60 - String.to_integer(jminute)
+        next_prayer_minutes =  String.to_integer(nexthour)*60 + String.to_integer(nextminute)
+        # current_prayer_minutes =  String.to_integer(phour)*60 + String.to_integer(pminute)
+        jamaah_calc_minutes =  String.to_integer(jhour)*60 + String.to_integer(jminute)
+
+        total = next_prayer_minutes - jamaah_calc_minutes
+
         hour = Integer.to_string(div(total, 60))#back to string to calc length
         minute = Integer.to_string(rem(total, 60))
-        if String.length(minute) == 1, do: minute = minute <> "0"
+
+        #if minute < 10, do: minute = "0" <> Integer.to_string(minute), else: minute = Integer.to_string(minute)
+
+        if String.length(minute) == 1, do: minute = "0" <> minute
         time = hour <> ":" <>  minute
       "fixed" ->
         if String.length(jminute) == 1, do: jminute = jminute <> "0"

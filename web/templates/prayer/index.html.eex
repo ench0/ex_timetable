@@ -1,15 +1,6 @@
-    <style>
-table {
-    background-color: linen;
-}
+<section id="admin">
 
-td, th {
-    background: #fff;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-} 
-</style>
-
+<h1>Admin Area</h1>
 
 <table>
     <tr>
@@ -34,8 +25,10 @@ td, th {
     <% end %>
 </table>
 
-
+<div class="spacer-30"></div>
     
-    <%= link to: prayer_path(@conn, :new), class: "btn-floating btn-large waves-effect waves-light red" do %>
+    <%= link to: prayer_path(@conn, :new), class: "btn" do %>
         <i class="material-icons">edit</i>
     <% end %>
+
+</section>

@@ -5,26 +5,52 @@ html {
 }
 
 body, form, ul, table {
-    width: 100%;
-    /*height: 100% !important;*/
-    position: relative;
-    /*min-width:1280px;*/
+   width: 100%;
    overflow-y: hidden;
    overflow-x: hidden; /* hides the horizontal scroll bar */
    margin:0; padding:0;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 48px;
+  text-align: center;
+  margin: 20px 0;
+  color: #3cb0fd;
+}
+
+table {
+    background-color: linen;
+}
+
+td, th {
+    background: #fff;
+    padding: 10px 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+th {
+  background: #3cb0fd;
+  text-align: center;
 }
 
 .container-main {
-    position:absolute;
+    position: relative;
     top:0;
     left: 0;
-    /*width:100%;
-    height: 56.25%;
-    min-width:1280px;
-    min-height:720px;*/
-    width:1280px;
-    height:720px;
-    background: #e5e5e5;
+    /*background: #e5e5e5;*/
+}
+
+section#admin {
+    width:800px;
+    display: block;
+    margin: 20px auto;
+}
+
+section#timetable {
+  background:#e9e9cc url('/images/timetable-bg.png');
+  width:100%;
 }
 
 .header {
@@ -54,110 +80,44 @@ body, form, ul, table {
     padding: 20px;
 }
 
-
-
-
-
-
-
-/* Phoenix flash messages */
-.alert:empty { display: none; }
-
-/* Phoenix inline forms in links and buttons */
-form.link, form.button {
-  display: inline;
+.btn {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
-.logo {
-  width: 519px;
-  height: 71px;
-  display: inline-block;
-  margin-bottom: 1em;
-  background-image: url("/images/phoenix.png");
-  background-size: 519px 71px;
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing {
-  padding-right: 15px;
-  padding-left: 15px;
+.spacer-20 {
+  margin: 20px 0;
 }
-
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
-.container-narrow > hr {
+.spacer-30 {
   margin: 30px 0;
 }
 
-/* Main marketing message */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 35px 0;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
-/* This file is for your main application css. */
-
-/*# sourceMappingURL=app.css.map*/
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-body {
-/*
-	background:#333;color:#e9e9e9;
-	font-family: sans-serif;
-	line-height: 150%;
-*/
-background:#e9e9cc url('/images/timetable-bg.png');
-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-}
-
+/*TIMETABLE*/
  ul#prayers, ul#jamaah {
 	 list-style-type: none;
 	 margin: 0;
@@ -274,3 +234,94 @@ footer p {
 	text-align: center;
 	text-transform: uppercase;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Phoenix flash messages */
+.alert:empty { display: none; }
+
+/* Phoenix inline forms in links and buttons */
+form.link, form.button {
+  display: inline;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+.logo {
+  width: 519px;
+  height: 71px;
+  display: inline-block;
+  margin-bottom: 1em;
+  background-image: url("/images/phoenix.png");
+  background-size: 519px 71px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 35px 0;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+/* This file is for your main application css. */
+
+/*# sourceMappingURL=app.css.map*/

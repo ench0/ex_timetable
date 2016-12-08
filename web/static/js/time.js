@@ -133,7 +133,7 @@ function timeDef(nextDay) {
 // var ishaJamaahStr = now.year()+'-'+(now.month()+1)+'-'+now.date()+' '+ishaJamaahType[1];
 // var ishaJamaah = moment(ishaJamaahStr,"YYYY-M-D hh:mm");
 
-var fajrJamaahOffset = document.getElementById("fajr-method").innerText;
+// var fajrJamaahOffset = document.getElementById("fajr-offset").innerText;
 
 
 var fajrJamaah = "";

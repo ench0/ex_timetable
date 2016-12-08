@@ -1,15 +1,6 @@
-<style>
-table {
-    background-color: linen;
-}
+<section id="admin">
 
-td, th {
-    background: #fff;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-} 
-</style>
-
+<h1>Admin Area</h1>
 
 <%= form_for @conn, prayer_path(@conn, :create), [as: :prayerjamaah], fn f -> %>
     <table>
@@ -37,6 +28,9 @@ td, th {
 
     </table>
 
+<div class="spacer-30"></div>
 
-  <%= submit "Submit" %>
+  <%= submit "Submit", class: "btn" %>
 <% end %>
+
+</select>
