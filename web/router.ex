@@ -9,6 +9,19 @@ defmodule Timetable.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :secure do
+    plug :accepts, ["html"]
+    plug BasicAuth, use_config: {:timetable, :pass}
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
+
+  pipeline :admin_layout do
+    plug :put_layout, {Timetable.LayoutView, :admin}
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -25,7 +38,7 @@ defmodule Timetable.Router do
   end
 
   scope "/prayers", Timetable do
-    pipe_through :browser
+    pipe_through [:secure, :admin_layout]
     resources "/", PrayerController
   end
 

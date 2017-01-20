@@ -7,25 +7,22 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Timetable!</title>
+    <title>Timetable</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/reset.css") %>">
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/timetable.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/semantic.min.css") %>">
+    <!--<link rel="stylesheet" href="<%= static_path(@conn, "/css/icon.css") %>">-->
+    <!--<link rel="stylesheet" href="<%= static_path(@conn, "/css/timetable.css") %>">-->
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/roboto.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/style.css") %>">
 
   </head>
 
-  <body>
-    <div class="container-main">
+<body>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <%= render @view_module, @view_template, assigns %>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
 
-    </div> <!-- /container -->
-
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <!--<script src="<%= static_path(@conn, "/js/app.js") %>"></script>-->
 
     <script src="<%= static_path(@conn, "/js/jquery.slim.min.js") %>"></script>
     <!--<script src="<%= static_path(@conn, "/js/moment.js") %>"></script>-->
@@ -35,11 +32,9 @@
     <script src="<%= static_path(@conn, "/js/moment-timezone-with-data.js") %>"></script>
     <script src="<%= static_path(@conn, "/js/moment-hijri.js") %>"></script>
 
-    <script src="<%= static_path(@conn, "/js/bootstrap-datetimepicker.min.js") %>"></script>
-
     <script src="<%= static_path(@conn, "/js/db/timetable.js") %>"></script>
-    <script src="<%= static_path(@conn, "/js/db/read_json.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/db/read-json.js") %>"></script>
     <script src="<%= static_path(@conn, "/js/time.js") %>"></script>
 
-  </body>
+</body>
 </html>

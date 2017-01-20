@@ -21,7 +21,7 @@ function init() {
         // console.log(actual_JSON);
         return actual_JSON;
     });
-    console.log(actual_JSON);
+    // console.log(actual_JSON);
 };
 
 init()

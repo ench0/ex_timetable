@@ -7,15 +7,21 @@ defmodule Timetable.PrayerController do
 
   def index(conn, _params) do
     prayerjamaah = File.read!(filejamaah) |> Poison.decode!()
+    modified = File.read!(filemodified) |> Poison.decode!()
+    settings = File.read!(filesettings) |> Poison.decode!()
+
+    day_in_year = Timex.format!(Timex.now, "%j", :strftime)
+    if String.starts_with?(day_in_year, "0"), do: day_in_year = String.trim_leading(day_in_year, "0")
 
     # [fajr, dhuhr, asr, maghrib, isha] = prayerjamaah
     # IO.puts "+++++"
     # IO.inspect prayerjamaah
+    # IO.inspect settings
     # # IO.inspect asr["method"]
     # IO.puts "+++++"
 
     # Phoenix.CodeReloader.reload!(:timetable)
-    render conn, prayerjamaah: prayerjamaah
+    render conn, prayerjamaah: prayerjamaah, day_in_year: day_in_year, modified: modified, settings: settings
   end
 
 
@@ -24,21 +30,36 @@ defmodule Timetable.PrayerController do
   # GET http://localhost:4000/prayers/new
   def new(conn, _params) do
     prayerjamaah = File.read!(filejamaah) |> Poison.decode!()
+    modified = File.read!(filemodified) |> Poison.decode!()
+    # user = Timetable.get_env(:timetable, :basic_auth)[:username]
 
+    settings = File.read!(filesettings) |> Poison.decode!()
+
+    day_in_year = Timex.format!(Timex.now, "%j", :strftime)
+    if String.starts_with?(day_in_year, "0"), do: day_in_year = String.trim_leading(day_in_year, "0")
+
+# {:ok, filesettings} = File.open filesettings, [:write]
+
+    # IO.puts "+++++"
+    # IO.inspect File.read(filesettings)
+    # IO.inspect is_bitstring day_in_year
+    # IO.inspect String.starts_with? day_in_year, "0"
+    # IO.inspect String.trim_leading(day_in_year, "0")
+    # IO.puts "+++++"
     # [fajr, dhuhr, asr, maghrib, isha] = prayerjamaah
     # IO.puts "+++++"
     # # IO.inspect fajr["id"]
     # IO.inspect prayerjamaah
     # IO.puts "+++++"
 
-    render conn, prayerjamaah: prayerjamaah#, fajr: fajr, dhuhr: dhuhr, asr: asr, maghrib: maghrib, isha: isha
+    render conn, prayerjamaah: prayerjamaah, day_in_year: day_in_year, modified: modified, settings: settings#, fajr: fajr, dhuhr: dhuhr, asr: asr, maghrib: maghrib, isha: isha
   end
 
 
 
 
   #POST
-  def create(conn, _params) do
+  def create(conn, params) do
       #get prayerjamaah
       # prayerjamaah = File.read!(filejamaah) |> Poison.decode!()
       #[fajr, dhuhr, asr, maghrib, isha] = prayerjamaah
@@ -48,7 +69,19 @@ defmodule Timetable.PrayerController do
       _leap = Timex.is_leap?(Timex.now)#to be used later?
       _today = Timex.format!(Timex.now, "%Y-%m-%d", :strftime)
       day_in_year = Timex.format!(Timex.now, "%j", :strftime)
-      
+      if String.starts_with?(day_in_year, "0"), do: day_in_year = String.trim_leading(day_in_year, "0")#trim leading 0
+
+
+
+      # IO.puts "+++++c+++++"
+      # # IO.inspect prayers
+      # # IO.inspect day_in_year
+      # # IO.inspect prayers[2]
+      # IO.inspect params["prayerjamaah"]["title"]
+      # IO.puts "+++++"
+
+
+
       [fajr_prayer, shurooq_prayer, dhuhr_prayer, asr_prayer, maghrib_prayer, isha_prayer] = prayers[day_in_year]
       fajr_prayer_hour = remove_zero(String.slice(fajr_prayer, 0,2))
       fajr_prayer_minute = String.slice(fajr_prayer, 3,2)
@@ -64,7 +97,7 @@ defmodule Timetable.PrayerController do
       isha_prayer_minute = String.slice(isha_prayer, 3,2)
 
       #modify prayerjamaah
-      prayerjamaah_new = IO.inspect conn.params["prayerjamaah"]
+      prayerjamaah_new = params["prayerjamaah"]
 
       #use func to calculate final jamaah time h:m
       fajr_jamaah_time = jamaah_time(prayerjamaah_new["fajr_hour"], prayerjamaah_new["fajr_minute"], fajr_prayer_hour, fajr_prayer_minute, prayerjamaah_new["fajr_method"], shurooq_prayer_hour, shurooq_prayer_minute)
@@ -91,17 +124,37 @@ defmodule Timetable.PrayerController do
       prayerjamaah = [fajr, dhuhr, asr, maghrib, isha]
       {:ok, filejamaah} = File.open filejamaah, [:write]
       IO.binwrite filejamaah, Poison.encode!(prayerjamaah)
-
       File.close filejamaah
 
+      #post modified
+      time = Timex.format!(Timex.now, "%H:%M", :strftime)
+      date = Timex.format!(Timex.now, "%d/%m/%Y", :strftime)
+      modified = %{"time": time, "date": date}
+      {:ok, filemodified} = File.open filemodified, [:write]
+      IO.binwrite filemodified, Poison.encode!(modified)
+      File.close filemodified
+
+      #post settings
+      title = prayerjamaah_new["title"]
+      body = prayerjamaah_new["body"]
+      hijrioffset = prayerjamaah_new["hijrioffset"]
+      settings = %{"title": title, "body": body, "hijrioffset": hijrioffset}
+      {:ok, filesettings} = File.open filesettings, [:write]
+      IO.binwrite filesettings, Poison.encode!(settings)
+      File.close filesettings
+
+      conn
+        |> put_flash(:extra, [Phoenix.HTML.Tag.content_tag(:div, [Phoenix.HTML.Tag.content_tag(:i, "", class: "info left aligned icon"), "Timetable modified successfully."], class: "ui left aligned header")])
+        |> redirect(to: prayer_path(conn, :index))
       # IO.puts "+++++ppp"
+      # IO.inspect params
       # IO.inspect conn.params["prayerjamaah"]#["asr_hour"]
       # IO.puts "-----prayerjamaah:"
       # IO.inspect fajr
       # IO.puts "-----"
       # IO.inspect fajr_jamaah_time
-      # IO.puts "+++++ppp"
-      redirect conn, to: prayer_path(conn, :index)
+
+      # redirect conn, to: prayer_path(conn, :index)
   end
 
 
@@ -176,6 +229,12 @@ defmodule Timetable.PrayerController do
     Path.join(:code.priv_dir(:timetable), "static/js/db/prayers.json")
   end
 
+  defp filemodified() do
+    Path.join(:code.priv_dir(:timetable), "static/js/db/modified.json")
+  end
 
+  defp filesettings() do
+    Path.join(:code.priv_dir(:timetable), "static/js/db/settings.json")
+  end
 
 end

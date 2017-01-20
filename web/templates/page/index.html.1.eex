@@ -1,0 +1,170 @@
+<style>
+    html, body {
+        height: 100%;
+    }
+
+    .ui.grid {
+        height: 100%;
+    }
+</style>
+
+
+<div class="ui padded equal height grid brown inverted basic segment">
+
+  <div class="one wide purple column">
+  </div>
+
+  <div class="fourteen wide stretched column">
+    <div class="ui equal height grid">
+    
+      <div class="sixteen wide red column">
+        <div class="ui orange inverted segment">
+          <div id="date-time">
+            <p id="date">date</p>
+            <p id="days-year">doy</p>
+            <p id="time">time</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sixteen wide yellow column">
+
+        <table class="ui inverted green celled table">
+          <thead>
+            <tr>
+              <th>Prayer</th>
+              <th>Time</th>
+              <th>Jama'ah</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% prayer_names = ["fajr", "shurooq", "dhuhr", "asr", "maghrib", "isha"]
+            Enum.each(prayer_names,  &IO.inspect/1) %>
+          <%= for prayer <- prayer_names do %>
+            <tr id="<%= prayer %>">
+              <td class="prayer-name"><%= prayer %></td>
+              <td id="prayer-time-<%= prayer %>"></td>
+              <td id="jamaah-time-<%= prayer %>"></td>
+            </tr>
+          <% end %>
+
+            <tr class="positive">
+              <td>Jimmy</td>
+              <td><i class="icon checkmark"></i> Approved</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <td>Jamie</td>
+              <td>Unknown</td>
+              <td class="positive"><i class="icon close"></i> Requires call</td>
+            </tr>
+            <tr class="negative">
+              <td>Jill</td>
+              <td>Unknown</td>
+              <td>None</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+
+        <div class="ui orange inverted segment">
+          <h3>Prayers</h3>
+          <ul id="prayers">
+            <% prayer_names = ["fajr", "shurooq", "dhuhr", "asr", "maghrib", "isha"]
+              Enum.each(prayer_names,  &IO.inspect/1) %>
+            <%= for prayer <- prayer_names do %>
+              <li id="<%= prayer %>"><span class="prayer-name"><%= prayer %></span><span id="prayer-time-<%= prayer %>"></span></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="eight wide blue column">      
+        <div class="ui orange inverted segment">
+          <h3>Jama'ah</h3>
+          <ul id="jamaah">
+            <% prayer_names = [" ", "fajr", "dhuhr", "asr", "maghrib", "isha"]
+              Enum.each(prayer_names,  &IO.inspect/1) %>
+            <%= for prayer <- prayer_names do %>
+            <li id="<%= prayer %>"><span class="jamaah-name"><%= prayer %></span><span id="jamaah-time-<%= prayer %>"></span></li>
+
+        <!--   <li id="jamaah-head"><span class="prayer-name">Jamaah:</span><span id="jamaah-time">&nbsp;</span></li>
+            <li id="fajr"><span class="prayer-name">Fajr:</span><span id="fajr-jamaah"></span></li>
+            <li id="dhuhr"><span class="prayer-name">Dhuhr:</span><span id="dhuhr-jamaah"></span></li>
+            <li id="asr"><span class="prayer-name">Asr:</span><span id="asr-jamaah"></span></li>
+            <li id="maghrib"><span class="prayer-name">Maghrib:</span><span id="maghrib-jamaah"></span></li>
+            <li id="isha"><span class="prayer-name">Isha:</span><span id="isha-jamaah"></span></li>-->
+            <% end %>
+          </ul>
+        </div>      
+      </div>
+
+      <div class="sixteen wide green column">
+        <div class="ui equal width grid">
+          <div class="grey middle right aligned column">      
+            <p>Next prayer</p>
+          </div>
+          <div class="yellow middle center aligned column">      
+            <p><span id="pending-name"></span></p>
+          </div>
+          <div class="grey middle left aligned column">      
+            <p id="timetoprayer"></p>
+            <!--<p id="timetofast"></p>-->
+          </div>
+        </div>
+      </div>
+
+      <div class="sixteen wide red column">
+        <div class="ui orange inverted segment">
+          <h1>Info</h1>
+          <p>Lorem inpus Lorem inpus Lorem inpus Lorem inpus Lorem inpus Lorem inpus Lorem inpus Lorem inpus Lorem inpus Lorem inpus Lorem inpus</p>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="one wide purple column">
+  </div>
+</div>
+
+
+<section id="timetable">
+
+
+
+
+
+
+
+
+
+<div class="ui orange inverted segment">
+
+  <div style="display:block;">
+    <% for prayer <- @prayerjamaah do %>
+      <span id="<%= prayer["name"] %>-method"><%= prayer["method"] %></span> <span id="<%= prayer["name"] %>-number"><%= prayer["jamaah_hour_calc"] %>:<%= prayer["jamaah_minute_calc"] %></span>
+    <% end %>
+
+    <%= for prayer <- @prayerjamaah do %>
+      <span id="<%= prayer["name"] %>-offset"><%= prayer["jamaah_offset"] %></span>
+    <% end %>
+
+  </div>
+
+
+  <a href="<%= static_path(@conn, "/js/db/prayers.json") %>">prayer_json</a>
+  <a href="<%= static_path(@conn, "/js/db/jamaah.json") %>">jamaah_json</a>
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+</script>
+
+</section>

@@ -20,7 +20,7 @@ function timeDef(nextDay) {
 	var dayOfYear = now.dayOfYear();
 	if (leap == true) daysInYear = 366; else daysInYear = 365;
 	// console.log(dayOfYear);
-	if (leap == false) dayOfYear += 1;
+	if (leap == false & dayOfYear > 59) dayOfYear += 1;
 	var prayerTimes = timetable[dayOfYear];
 
 	var fajrTimeStr = now.year()+'-'+(now.month()+1)+'-'+now.date()+' '+prayerTimes[0];
@@ -29,6 +29,8 @@ function timeDef(nextDay) {
 	var asrTimeStr = now.year()+'-'+(now.month()+1)+'-'+now.date()+' '+prayerTimes[3];
 	var maghribTimeStr = now.year()+'-'+(now.month()+1)+'-'+now.date()+' '+prayerTimes[4];
 	var ishaTimeStr = now.year()+'-'+(now.month()+1)+'-'+now.date()+' '+prayerTimes[5];
+	var jummuahTimeStr = now.year()+'-'+(now.month()+1)+'-'+now.date()+' '+'13:10';
+
 
 	var fajrTime = moment(fajrTimeStr,"YYYY-M-D hh:mm");
 	var shurooqTime = moment(shurooqTimeStr,"YYYY-M-D hh:mm");
@@ -38,6 +40,8 @@ function timeDef(nextDay) {
 	var ishaTime = moment(ishaTimeStr,"YYYY-M-D hh:mm");
 	var midnightTimePass = now.clone().startOf('day');
 	var midnightTimeNext = now.clone().endOf('day');
+	var jummuahTime = moment(jummuahTimeStr,"YYYY-M-D hh:mm");
+
 
 
 	/********** Next Prayer **********/
@@ -138,6 +142,7 @@ var dhuhrJamaahOffset = document.getElementById("dhuhr-offset").innerText;
 var asrJamaahOffset = document.getElementById("asr-offset").innerText;
 var maghribJamaahOffset = document.getElementById("maghrib-offset").innerText;
 var ishaJamaahOffset = document.getElementById("isha-offset").innerText;
+var hijriOffset = document.getElementById("hijri-offset").innerText;
 
 var fajrJamaah = moment(fajrTime).add(fajrJamaahOffset, 'minutes');
 var dhuhrJamaah = moment(dhuhrTime).add(dhuhrJamaahOffset, 'minutes');
@@ -154,9 +159,9 @@ var ishaJamaah = moment(ishaTime).add(ishaJamaahOffset, 'minutes');
 
 
 	return {now:now,countNextPrayerTime:countNextPrayerTime,nextDay:nextDay,nextPrayerName:nextPrayerName,
-			fajrTime:fajrTime, shurooqTime:shurooqTime, dhuhrTime:dhuhrTime, asrTime:asrTime, maghribTime:maghribTime, ishaTime:ishaTime,
+			fajrTime:fajrTime, shurooqTime:shurooqTime, dhuhrTime:dhuhrTime, asrTime:asrTime, maghribTime:maghribTime, ishaTime:ishaTime, jummuahTime:jummuahTime,
 			nextPrayerName:nextPrayerName, countNextPrayerTime:countNextPrayerTime,fastingTimeName:fastingTimeName,countFastingTime:countFastingTime,
-			dayOfYear:dayOfYear, daysInYear:daysInYear,
+			dayOfYear:dayOfYear, daysInYear:daysInYear,hijriOffset: hijriOffset,
 			fajrJamaah: fajrJamaah, dhuhrJamaah: dhuhrJamaah, asrJamaah:asrJamaah, maghribJamaah:maghribJamaah, ishaJamaah:ishaJamaah
 			};
 
@@ -173,10 +178,26 @@ if (!nextDay) var nextDay = 0;//if nextDay is not defined
 
 	var nextDay = def.nextDay;
 
+	// Hijri adjustment
+	var hijri = moment(def.now).add(def.hijriOffset, 'days').format('iD iMMMM iYYYY');
+	var gregorian = def.now.format('dddd, D MMMM YYYY');
+
 	/********** Parse to HTML **********/
 	document.getElementById("time").innerHTML = def.now.format('HH:mm:ss');
 	//document.getElementById("date").innerHTML = def.now.format('[<div>]dddd [</div><div>] D MMMM YYYY [</div>]');//without hijri
-	document.getElementById("date").innerHTML = def.now.format('[<div>]dddd [</div><div>] iD iMMMM iYYYY [</div><div>] D MMMM YYYY [</div>]');
+	// document.getElementById("date").innerHTML = def.now.format('[<span>]dddd [</span> &middot; <span>] iD iMMMM iYYYY [</span> &middot; <span>] D MMMM YYYY [</span>]');
+	document.getElementById("date").innerHTML = gregorian + " &middot; " + hijri;
+
+	// if Ramadan
+	if (def.now.format('iMMMM') == "Ramadan") {
+		var iftar = true;
+	}
+	else {var iftar = false}
+
+	// if Friday do Jummuah
+	if (def.now.format('dddd') == "Friday") {calcDhuhr = def.jummuahTime.format('HH:mm')}
+	else {calcDhuhr =  def.dhuhrJamaah.format('HH:mm')}
+
 
 	// Prayer time display
 	document.getElementById("prayer-time-fajr").innerHTML = def.fajrTime.format('HH:mm');
@@ -187,14 +208,22 @@ if (!nextDay) var nextDay = 0;//if nextDay is not defined
 	document.getElementById("prayer-time-isha").innerHTML = def.ishaTime.format('HH:mm');
 	// Jamaah time display
 	document.getElementById("jamaah-time-fajr").innerHTML = def.fajrJamaah.format('HH:mm');
-	document.getElementById("jamaah-time-dhuhr").innerHTML = def.dhuhrJamaah.format('HH:mm');
+	document.getElementById("jamaah-time-dhuhr").innerHTML = calcDhuhr;
 	document.getElementById("jamaah-time-asr").innerHTML = def.asrJamaah.format('HH:mm');
 	document.getElementById("jamaah-time-maghrib").innerHTML = def.maghribJamaah.format('HH:mm');
 	document.getElementById("jamaah-time-isha").innerHTML = def.ishaJamaah.format('HH:mm');
 
+	//pending
+	document.getElementById("row-fajr").className = "";//reset
+	document.getElementById("row-dhuhr").className = "";
+	document.getElementById("row-asr").className = "";
+	document.getElementById("row-maghrib").className = "";
+	document.getElementById("row-isha").className = "";
+	document.getElementById("row-"+def.nextPrayerName).className = "warning";
 
 
- 	document.getElementById("days-year").innerHTML = def.dayOfYear + "/" + def.daysInYear;
+
+ 	//document.getElementById("days-year").innerHTML = def.dayOfYear + "/" + def.daysInYear;
 
  	document.getElementById("pending-name").innerHTML = def.nextPrayerName;
  	document.getElementById("timetoprayer").innerHTML = def.countNextPrayerTime;
@@ -204,9 +233,9 @@ if (!nextDay) var nextDay = 0;//if nextDay is not defined
 	setTimeout(function(){timeDisplay(nextDay)}, 1000);
 
 
-	document.getElementById("fajr").className = "";document.getElementById("shurooq").className = "";document.getElementById("dhuhr").className = "";
-	document.getElementById("asr").className = "";document.getElementById("maghrib").className = "";document.getElementById("isha").className = "";
-	document.getElementById(def.nextPrayerName).className = "next";
+	// document.getElementById("fajr").className = "";document.getElementById("shurooq").className = "";document.getElementById("dhuhr").className = "";
+	// document.getElementById("asr").className = "";document.getElementById("maghrib").className = "";document.getElementById("isha").className = "";
+	// document.getElementById(def.nextPrayerName).className = "next";
 
 
 	return nextDay;

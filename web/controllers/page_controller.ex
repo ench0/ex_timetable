@@ -3,6 +3,7 @@ defmodule Timetable.PageController do
 
   def index(conn, _params) do
     prayerjamaah = File.read!(filejamaah) |> Poison.decode!()
+    settings = File.read!(filesettings) |> Poison.decode!()
 
     # [fajr, dhuhr, asr, maghrib, isha] = prayerjamaah
     # IO.puts "+++++"
@@ -10,11 +11,15 @@ defmodule Timetable.PageController do
     # # IO.inspect asr["method"]
     # IO.puts "+++++"
 
-    render conn, "index.html", prayerjamaah: prayerjamaah
+    render conn, "index.html", prayerjamaah: prayerjamaah, settings: settings
   end
 
   defp filejamaah() do
     Path.join(:code.priv_dir(:timetable), "static/js/db/jamaah.json")
+  end
+
+  defp filesettings() do
+    Path.join(:code.priv_dir(:timetable), "static/js/db/settings.json")
   end
 
 end

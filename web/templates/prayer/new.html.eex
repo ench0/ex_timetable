@@ -1,36 +1,120 @@
-<section id="admin">
+<div class="ui basic segment container">
+    <div class="ui message blue info"><%= get_flash(@conn, :info) %></div>
+    <div class="ui message orange extra"><%= get_flash(@conn, :extra) %></div>
+    <div class="ui message red error"><%= get_flash(@conn, :error) %></div>
+</div>
 
-<h1>Admin Area</h1>
+<section id="admin" class="ui segment container blue">
 
-<%= form_for @conn, prayer_path(@conn, :create), [as: :prayerjamaah], fn f -> %>
-    <table>
-        <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Method</th>
-            <th>Calc</th>
-            <th>Prayer</th>
-            <th>Jamaah</th>
-        </tr>
+    <h1>Admin Area</h1>
 
-        <%= for prayer <- @prayerjamaah do %>
-        <tr>
-            <%# fajr %>
-            <td><%= prayer["id"] %></td>
-            <td><%= prayer["name"] %></td>
-            <td><%= select(f, String.to_atom(prayer["name"]<>"_method"), ["Fixed time": "fixed", "Before next": "beforenext", "After this": "afterthis"], value: prayer["method"]) %></td>
-            <td><%= select(f, String.to_atom(prayer["name"]<>"_hour"), [hour: 00..23], value: prayer["jamaah_hour_calc"]) %> : <%= select(f, String.to_atom(prayer["name"]<>"_minute"), [minute: 0..59], value: prayer["jamaah_minute_calc"]) %></td>
-            <td><%= prayer["prayer_hour"] %>:<%= prayer["prayer_minute"] %></td>
-            <td><%= prayer["jamaah_time"] %></td>
-        </tr>
-        <% end %>
+    <div class="ui two cards">
+    <div class="card">
+        <div class="ui top attached button">
+        <i class="info icon"></i>
+        INFO
+        </div>
+        <div class="content">
+        <div class="description">
+            <span class="ui sub header">Now</span>: <%= Timex.format!(Timex.now, "%H:%M, %d/%m/%Y", :strftime) %><br />
+            <span class="ui sub header">Day in Year</span>: <%= @day_in_year %>
+        </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="ui top attached button">
+        <i class="calendar icon"></i>
+        DATE
+        </div>
+        <div class="content">
+        <div class="description">
+            <span class="ui sub header">Modified</span>: <%= @modified["time"] %>, <%= @modified["date"] %><br />
+            <span class="ui sub header">User</span>: admin
+        </div>
+        </div>
+    </div>
+    </div>
 
 
-    </table>
 
-<div class="spacer-30"></div>
 
-  <%= submit "Submit", class: "btn" %>
-<% end %>
 
-</select>
+
+
+
+
+    <%= form_for @conn, prayer_path(@conn, :create), [as: :prayerjamaah, class: "ui form flat"], fn f -> %>
+        <table class="ui celled striped table">
+            <thead>
+                <tr>
+                    <th class="one wide">No</th>
+                    <th class="two wide">Name</th>
+                    <th class="four wide">Method</th>
+                    <th class="five wide">Calc</th>
+                    <th class="two wide">Prayer</th>
+                    <th class="two wide">Jamaah</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%= for prayer <- @prayerjamaah do %>
+                <tr>
+                    <%# fajr %>
+                    <td><%= prayer["id"] %></td>
+                    <td><%= prayer["name"] %></td>
+                    <td><%= select(f, String.to_atom(prayer["name"]<>"_method"), ["Fixed time": "fixed", "Before next": "beforenext", "After this": "afterthis"], class: "ui fluid dropdown", value: prayer["method"]) %></td>
+                    <td> <div class="two fields">
+                            <div class="field">
+                                <%= select(f, String.to_atom(prayer["name"]<>"_hour"), [hour: 00..23], class: "ui fluid dropdown", value: prayer["jamaah_hour_calc"]) %>
+                            </div>
+                            <div class="field">
+                                <%= select(f, String.to_atom(prayer["name"]<>"_minute"), [minute: 0..59], class: "ui fluid dropdown", value: prayer["jamaah_minute_calc"]) %>
+                            </div>
+                        </div>
+                    </td>
+                    <td><%= prayer["prayer_hour"] %>:<%= prayer["prayer_minute"] %></td>
+                    <td><%= prayer["jamaah_time"] %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+
+        <div class="ui grid blue segment">
+
+        <!--<div class="one wide purple column">
+        </div>-->
+
+            <div class="twelve wide stretched column">
+                <div class="field">
+                    <label>Title</label>
+                    <%= text_input(f, :title, value: @settings["title"], type: "tel", size: "80", maxlength: "80") %>
+                </div>
+            </div>
+            <div class="four wide stretched column">
+                <div class="field">
+                    <label>Hijri date adjustment</label>
+                    <%= select(f, :hijrioffset, [Days: -2..2], class: "ui fluid dropdown", value: @settings["hijrioffset"]) %>
+                    <%#= number_input(f, :hijrioffset, value: @settings["hijrioffset"]) %>
+                </div>
+            </div>
+            <div class="sixteen wide stretched column">
+                <div class="field">
+                    <label>Text</label>
+                    <%= textarea(f, :body, rows: "3", value: @settings["body"], type: "tel", size: "660", maxlength: "660") %>
+                </div>
+            </div>
+        </div>
+
+        <!-- submit -->
+        <div class="ui basic segment">
+            <%= submit class: "ui positive button" do %>
+                <i class="checkmark icon"></i> Submit
+            <% end %>
+            <%= link to: prayer_path(@conn, :index), class: "ui button negative" do %>
+                <i class="remove icon"></i> Cancel
+            <% end %>
+        </div>
+    <% end %>
+
+</section>
+
+<br />

@@ -1,34 +1,83 @@
-<section id="admin">
+<div class="ui basic segment container">
+    <div class="ui message blue info"><%= get_flash(@conn, :info) %></div>
+    <div class="ui message orange extra"><%= get_flash(@conn, :extra) %></div>
+    <div class="ui message red error"><%= get_flash(@conn, :error) %></div>
+</div>
 
-<h1>Admin Area</h1>
 
-<table>
-    <tr>
-        <th>No</th>
-        <th>Name</th>
-        <th>Method</th>
-        <th>Calc</th>
-        <th>Offset</th>
-        <th>Prayer</th>
-        <th>Jamaah</th>
-    </tr>
-    <%= for prayer <- @prayerjamaah do %>
-        <tr>
-            <td><%= prayer["id"] %></td>
-            <td><%= prayer["name"] %></td>
-            <td><%= prayer["method"] %></td>
-            <td><%= prayer["jamaah_hour_calc"] %>:<%= prayer["jamaah_minute_calc"] %></td>
-            <td><%= prayer["jamaah_offset"] %> min</td>
-            <td><%= prayer["prayer_hour"] %>:<%= prayer["prayer_minute"] %></td>
-            <td><%= prayer["jamaah_time"]  %></td>
-        </tr>
-    <% end %>
-</table>
+<section id="admin" class="ui segment container blue">
 
-<div class="spacer-30"></div>
+    <h1>Admin Area</h1>
+
+    <div class="ui two cards">
+    <div class="card">
+        <div class="ui top attached button">
+        <i class="info icon"></i>
+        INFO
+        </div>
+        <div class="content">
+        <div class="description">
+            <span class="ui sub header">Now</span>: <%= Timex.format!(Timex.now, "%H:%M, %d/%m/%Y", :strftime) %><br />
+            <span class="ui sub header">Day in Year</span>: <%= @day_in_year %>
+        </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="ui top attached button">
+        <i class="calendar icon"></i>
+        DATE
+        </div>
+        <div class="content">
+        <div class="description">
+            <span class="ui sub header">Modified</span>: <%= @modified["time"] %>, <%= @modified["date"] %><br />
+            <span class="ui sub header">User</span>: admin
+        </div>
+        </div>
+    </div>
+    </div>
     
-    <%= link to: prayer_path(@conn, :new), class: "btn" do %>
-        <i class="material-icons">edit</i>
-    <% end %>
+    <table class="ui celled striped table">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Method</th>
+                <th>Calc</th>
+                <th>Offset</th>
+                <th class="ui blue inverted">Prayer</th>
+                <th class="active">Jamaah</th>
+            </tr>
+        </thead>
+        <tbody>
 
+        <%= for prayer <- @prayerjamaah do %>
+            <tr>
+                <td><%= prayer["id"] %></td>
+                <td><%= prayer["name"] %></td>
+                <td><%= prayer["method"] %></td>
+                <td><%= prayer["jamaah_hour_calc"] %>:<%= prayer["jamaah_minute_calc"] %></td>
+                <td><%= prayer["jamaah_offset"] %> min</td>
+                <td class="active"><%= prayer["prayer_hour"] %>:<%= prayer["prayer_minute"] %></td>
+                <td class="active"><%= prayer["jamaah_time"]  %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+
+    <div class="ui segment primary">
+        <h3><%= @settings["title"]%></h3>
+        <p><%= @settings["body"]%></p>
+    </div>
+
+
+
+    <!-- submit -->
+    <div class="ui basic segment">
+        <%= link to: prayer_path(@conn, :new), class: "ui button primary" do %>
+            <i class="write icon"></i> Edit
+        <% end %>
+    </div>  
+    
 </section>
+
+<br />
