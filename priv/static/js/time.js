@@ -260,7 +260,7 @@ function screenRefresh(counter) {
 
 
 	function frame() {
-		if (pos == 1000) {
+		if (pos == 2100) {
 		clearInterval(id);
 		document.getElementById("refresh").style = "display:none;";
 		} else {
