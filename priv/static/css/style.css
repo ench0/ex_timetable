@@ -90,10 +90,11 @@
 
 html {
     font-family: Roboto, GillSans, Calibri, Trebuchet, sans-serif;
+  font-size: 120%;
 }
 
 body {
-  background: url("/images/timetable-bg.png") #004001;
+  background: url("/images/timetable-bg.png") #290500;
 }
 .help-block {
     color: #d32f2f;
@@ -312,23 +313,23 @@ td form {
   font-weight: normal;
 }
 .ui.huge.header {
-  font-size: 5em;
+  font-size: 7em;
   font-family: 'PT Mono', monospace;
   font-family: 'Roboto', monospace;
   /*font-family: 'Cutive Mono', monospace;*/
   /*font-family: 'Droid Sans Mono', monospace;*/
-  font-weight: 200;
+  font-weight: 300;
 }
 
 .ui.padded table td, .ui.padded table th, .grid p {
-  font-size: 150%;
+  font-size: 190%;
   font-family: 'Roboto', sans;
-  font-weight: 200;
+  font-weight: 300;
 }
 .bottom p, .ui.padded table td.arabic, .ui.padded table th.arabic, span.arabic {
   font-size: 150%;
   font-family: 'Changa', sans;
-  font-weight: 200;
+  font-weight: 300;
   text-align: right
 }
 .bottom p {
