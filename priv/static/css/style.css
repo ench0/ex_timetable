@@ -90,12 +90,12 @@
 
 html {
     font-family: Roboto, GillSans, Calibri, Trebuchet, sans-serif;
-  font-size: 120%;
+  font-size: 100%;
 }
 
-.pusher * {
+/*.pusher * {
   font-size: 90%;
-}
+}*/
 
 body {
   background: url("/images/timetable-bg.png") #290500;
@@ -323,10 +323,11 @@ td form {
   /*font-family: 'Cutive Mono', monospace;*/
   /*font-family: 'Droid Sans Mono', monospace;*/
   font-weight: 300;
+  text-shadow: 0 0 7px #000;
 }
 
 .ui.padded table td, .ui.padded table th, .grid p {
-  font-size: 190%;
+  font-size: 200%;
   font-family: 'Roboto', sans;
   font-weight: 300;
 }
@@ -385,7 +386,14 @@ td form {
 .ui.inverted.segment>.ui.header, .ui.inverted.table th, .ui.inverted.table td,
 .ui.grid>.yellow.column, .ui.grid>.yellow.row, .ui.inverted.grey.segment,
 .ui.grey.header  {
-  color: rgba(255,255,255,.75)!important
+  color: rgba(255,255,255,.75)!important;
+}
+p.ui.center.aligned.small.header {
+  margin:10px 0 0;
+}
+
+.ui.inverted.grey.segment p{
+  font-size: 120%;
 }
 
 select.ui.dropdown {
@@ -396,6 +404,14 @@ select.ui.dropdown,
 .ui.form input[type=tel] {
   padding:.5rem;
   height: 2rem;
+}
+
+.ui.padded table tr.warning td {
+    text-shadow: 0 0 5px #fff;
+}
+.ui.padded table thead th {
+  border-bottom: 5px solid #fff;
+  /*margin-bottom:2px;*/
 }
 
 .ui.small.header, 
