@@ -93,6 +93,10 @@ html {
   font-size: 120%;
 }
 
+.pusher * {
+  font-size: 90%;
+}
+
 body {
   background: url("/images/timetable-bg.png") #290500;
 }
