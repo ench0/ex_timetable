@@ -10,25 +10,22 @@
     <title>Timetable</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/reset.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/semantic.min.css") %>">
-    <!--<link rel="stylesheet" href="<%= static_path(@conn, "/css/icon.css") %>">-->
-    <!--<link rel="stylesheet" href="<%= static_path(@conn, "/css/timetable.css") %>">-->
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/changa.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/roboto.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/style.css") %>">
 
   </head>
 
 <body>
-
+    <div id="refresh">
+      <div class="fadein"></div>
+      <div id="message-text" class="black">kiki</div>
+      <div class="fadeout"></div>
+    </div>
     <%= render @view_module, @view_template, assigns %>
 
-
-    <!--<script src="<%= static_path(@conn, "/js/app.js") %>"></script>-->
-
     <script src="<%= static_path(@conn, "/js/jquery.slim.min.js") %>"></script>
-    <!--<script src="<%= static_path(@conn, "/js/moment.js") %>"></script>-->
-    <!--<script src="<%= static_path(@conn, "/js/bootstrap.min.js") %>"></script>-->
     <script src="<%= static_path(@conn, "/js/moment.min.js") %>"></script>
-    <!-- <script src="moment-timezone.min.js"></script> -->
     <script src="<%= static_path(@conn, "/js/moment-timezone-with-data.js") %>"></script>
     <script src="<%= static_path(@conn, "/js/moment-hijri.js") %>"></script>
 

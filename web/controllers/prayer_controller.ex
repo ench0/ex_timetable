@@ -34,6 +34,7 @@ defmodule Timetable.PrayerController do
     # user = Timetable.get_env(:timetable, :basic_auth)[:username]
 
     settings = File.read!(filesettings) |> Poison.decode!()
+    messages = File.read!(filemessages) |> Poison.decode!()
 
     day_in_year = Timex.format!(Timex.now, "%j", :strftime)
     if String.starts_with?(day_in_year, "0"), do: day_in_year = String.trim_leading(day_in_year, "0")
@@ -52,7 +53,7 @@ defmodule Timetable.PrayerController do
     # IO.inspect prayerjamaah
     # IO.puts "+++++"
 
-    render conn, prayerjamaah: prayerjamaah, day_in_year: day_in_year, modified: modified, settings: settings#, fajr: fajr, dhuhr: dhuhr, asr: asr, maghrib: maghrib, isha: isha
+    render conn, prayerjamaah: prayerjamaah, day_in_year: day_in_year, modified: modified, settings: settings, messages: messages#, fajr: fajr, dhuhr: dhuhr, asr: asr, maghrib: maghrib, isha: isha
   end
 
 
@@ -138,10 +139,19 @@ defmodule Timetable.PrayerController do
       title = prayerjamaah_new["title"]
       body = prayerjamaah_new["body"]
       hijrioffset = prayerjamaah_new["hijrioffset"]
-      settings = %{"title": title, "body": body, "hijrioffset": hijrioffset}
+      refreshtimeout = prayerjamaah_new["refreshtimeout"]
+      settings = %{"title": title, "body": body, "hijrioffset": hijrioffset, "refreshtimeout": refreshtimeout}
       {:ok, filesettings} = File.open filesettings, [:write]
       IO.binwrite filesettings, Poison.encode!(settings)
       File.close filesettings
+
+      #post messages
+      message0 = prayerjamaah_new["message0"]; message1 = prayerjamaah_new["message1"]; message2 = prayerjamaah_new["message2"]; message3 = prayerjamaah_new["message3"]; message4 = prayerjamaah_new["message4"]
+      message5 = prayerjamaah_new["message5"]; message6 = prayerjamaah_new["message6"]; message7 = prayerjamaah_new["message7"]; message8 = prayerjamaah_new["message8"]; message9 = prayerjamaah_new["message9"]
+      messages = %{"message0": message0, "message1": message1, "message2": message2, "message3": message3, "message4": message4, "message5": message5, "message6": message6, "message7": message7, "message8": message8, "message9": message9}
+      {:ok, filemessages} = File.open filemessages, [:write]
+      IO.binwrite filemessages, Poison.encode!(messages)
+      File.close filemessages
 
       conn
         |> put_flash(:extra, [Phoenix.HTML.Tag.content_tag(:div, [Phoenix.HTML.Tag.content_tag(:i, "", class: "info left aligned icon"), "Timetable modified successfully."], class: "ui left aligned header")])
@@ -235,6 +245,10 @@ defmodule Timetable.PrayerController do
 
   defp filesettings() do
     Path.join(:code.priv_dir(:timetable), "static/js/db/settings.json")
+  end
+
+  defp filemessages() do
+    Path.join(:code.priv_dir(:timetable), "static/js/db/messages.json")
   end
 
 end

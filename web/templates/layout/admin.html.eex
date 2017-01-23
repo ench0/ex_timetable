@@ -14,6 +14,7 @@
     <!--<link rel="stylesheet" href="<%= static_path(@conn, "/css/timetable.css") %>">-->
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/roboto.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/style.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/accordion.css") %>">
 
   </head>
 
@@ -21,7 +22,7 @@
 <!-- Page Contents -->
 <div class="pusher">
 
-  <div class="ui inverted blue vertical header segment">
+  <div class="ui inverted vertical header segment">
     <div class="ui container">
       <div class="ui stackable inverted divided equal height stackable grid center aligned">
         <h1>[Timetable]</h1>
@@ -35,7 +36,7 @@
       </div>
   </main>
 
-  <div class="ui inverted blue vertical footer segment">
+  <div class="ui inverted vertical footer segment">
     <div class="ui container">
       <div class="ui stackable inverted divided equal height stackable grid">
         <div class="three wide column">

@@ -25,8 +25,8 @@
 -->
 
       <div class="sixteen wide yellow middle aligned column">
-        <h4 class="ui horizontal divider grey header">
-          <strong>Islamic Cultural Centre of Ireland</strong>
+        <h4 class="ui horizontal grey divider header">
+          Islamic Cultural Centre of Ireland
         </h4>
         <div class="ui sizer inverted grey vertical segment" id="date-time">
           <p class="ui center aligned small header" id="date">date</p>
@@ -37,22 +37,24 @@
 
       <div class="sixteen wide yellow middle aligned column">
 
-        <table class="ui inverted grey celled table">
+        <table class="ui inverted grey table"><!-- three column celled -->
           <thead>
             <tr>
               <th class="left aligned four wide">Prayer</th>
-              <th class="center aligned six wide">Time</th>
-              <th class="center aligned six wide">Jama'ah</th>
+              <th class="center aligned four wide">Time</th>
+              <th class="center aligned four wide">Jama'ah</th>
+              <th class="center aligned four wide arabic">صلاة</th>
             </tr>
           </thead>
           <tbody>
-          <% prayer_names = ["fajr", "shurooq", "dhuhr", "asr", "maghrib", "isha"]
-            Enum.each(prayer_names,  &IO.inspect/1) %>
+          <% prayer_names = [["fajr","الفجر"], ["shurooq", "الشروق"], ["dhuhr", "الظهر"], ["asr", "العصر"], ["maghrib", "المغرب"], ["isha", "العشاء"]]
+            #Enum.each(prayer_names,  &IO.inspect/1) %>
           <%= for prayer <- prayer_names do %>
-            <tr id="row-<%= prayer %>">
-              <td id="prayer-name-<%= prayer %>"><%= prayer %></td>
-              <td class="center aligned" id="prayer-time-<%= prayer %>"></td>
-              <td class="center aligned" id="jamaah-time-<%= prayer %>"></td>
+            <tr id="row-<%= List.first(prayer) %>">
+              <td id="prayer-name-<%= List.first(prayer) %>"><%= List.first(prayer) %></td>
+              <td class="center aligned" id="prayer-time-<%= List.first(prayer) %>"></td>
+              <td class="center aligned" id="jamaah-time-<%= List.first(prayer) %>"></td>
+              <td class="arabic" id="prayer-name-<%= List.first(prayer) %>"><%= List.last(prayer) %></td>
             </tr>
           <% end %>
           </tbody>
@@ -62,7 +64,7 @@
 
 
 
-      <div class="sixteen wide grey middle aligned column ui basic container">
+      <div class="sixteen wide grey middle aligned column">
         <div class="ui equal width grid">
           <div class="yellow right aligned column">      
             <p>Next prayer</p>
@@ -106,9 +108,11 @@
   <% end %>
 
   <span id="hijri-offset"><%= @settings["hijrioffset"] %></span>
+  <span id="refresh-timeout"><%= @settings["refreshtimeout"] %></span>
 
-  <a href="<%= static_path(@conn, "/js/db/prayers.json") %>">prayer_json</a>
-  <a href="<%= static_path(@conn, "/js/db/jamaah.json") %>">jamaah_json</a>
+  <%= for no <- 0..9 do %>
+    <span id="message<%=no%>"><%= @messages["message#{no}"] %></span>
+  <% end %>
 
 </div>
 

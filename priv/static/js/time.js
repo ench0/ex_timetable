@@ -243,3 +243,44 @@ if (!nextDay) var nextDay = 0;//if nextDay is not defined
 
 
 })();
+
+
+
+
+function screenRefresh(counter) {
+
+	document.getElementById("refresh").style = "display:block;";
+	var message = document.getElementById("message"+counter).innerText;
+
+	var elem = document.getElementById("refresh");   
+	var pos = -100;
+	var id = setInterval(frame, 72);
+
+ 	document.getElementById("message-text").innerHTML = message;
+
+
+	function frame() {
+		if (pos == 1000) {
+		clearInterval(id);
+		document.getElementById("refresh").style = "display:none;";
+		} else {
+		pos++; 
+		elem.style.top = pos + 'px'; 
+		//   elem.style.left = pos + 'px'; 
+		}
+	}
+};
+
+var counter = 0;
+var refreshTimeout = (document.getElementById("refresh-timeout").innerText) * 1000 * 60;
+// console.log(refreshTimeout);
+screenRefresh(counter);//start immediately
+
+var interval = function(){
+	// console.log(refreshTimeout);
+	counter ++;
+	screenRefresh(counter);
+	if (counter == 10) counter = 0;
+}
+
+setInterval(interval, refreshTimeout);

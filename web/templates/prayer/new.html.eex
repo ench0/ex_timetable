@@ -4,7 +4,7 @@
     <div class="ui message red error"><%= get_flash(@conn, :error) %></div>
 </div>
 
-<section id="admin" class="ui segment container blue">
+<section id="admin" class="ui segment container orange">
 
     <h1>Admin Area</h1>
 
@@ -78,12 +78,12 @@
             </tbody>
         </table>
 
-        <div class="ui grid blue segment">
+        <div class="ui grid orange segment">
 
         <!--<div class="one wide purple column">
         </div>-->
 
-            <div class="twelve wide stretched column">
+            <div class="eight wide stretched column">
                 <div class="field">
                     <label>Title</label>
                     <%= text_input(f, :title, value: @settings["title"], type: "tel", size: "80", maxlength: "80") %>
@@ -96,6 +96,13 @@
                     <%#= number_input(f, :hijrioffset, value: @settings["hijrioffset"]) %>
                 </div>
             </div>
+            <div class="four wide stretched column">
+                <div class="field">
+                    <label>Messages frequency</label>
+                    <%= select(f, :refreshtimeout, [Minutes: 5..60], class: "ui fluid dropdown", value: @settings["refreshtimeout"]) %>
+                    <%#= number_input(f, :refreshtimeout, value: @settings["refreshtimeout"]) %>
+                </div>
+            </div>
             <div class="sixteen wide stretched column">
                 <div class="field">
                     <label>Text</label>
@@ -103,6 +110,35 @@
                 </div>
             </div>
         </div>
+
+
+        <section class="ac-container">
+            <div>
+                <input id="ac-1" name="accordion-1" type="checkbox" />
+                <label for="ac-1">Messages</label>
+                <article class="ac-small">
+                    <div class="ui grid orange segment">
+                        <div class="sixteen wide stretched column">
+                            <%= for message <- 0..9 do %>
+                            <% message_atom = String.to_atom("message"<>Integer.to_string(message)) %>
+                            <div class="field">
+                                <label>Message <%= message+1 %></label>
+                                <%= textarea(f, message_atom, rows: "3", value: @messages["message#{message}"], type: "tel", size: "660", maxlength: "660") %>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
 
         <!-- submit -->
         <div class="ui basic segment">
