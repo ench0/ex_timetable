@@ -69,7 +69,7 @@
         </div>
       </div>
 
-      <div class="sixteen wide middle aligned column">
+      <div class="sixteen wide middle aligned text1 column">
         <div class="ui bottom segment">
           <h4 class="ui horizontal divider header">
             <i class="info icon"></i><%= @settings["title"] %>
@@ -78,7 +78,7 @@
         </div>
       </div>
 
-      <div class="sixteen wide middle aligned column">
+      <div class="sixteen wide middle aligned text2 column">
         <div class="ui bottom segment">
           <%= Phoenix.HTML.Format.text_to_html(@settings["announcement"], wrapper_tag: :h1, attributes: [class: "header arabic"]) %>
         </div>
