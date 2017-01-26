@@ -74,10 +74,16 @@
           <h4 class="ui horizontal divider header">
             <i class="info icon"></i><%= @settings["title"] %>
           </h4>
-          <p><%= Phoenix.HTML.Format.text_to_html(@settings["body"]) %></p>
+          <p><%= Phoenix.HTML.Format.text_to_html(@settings["body"], attributes: [class: "arabic"]) %></p>
         </div>
       </div>
-    
+
+      <div class="sixteen wide middle aligned column">
+        <div class="ui bottom segment">
+          <%= Phoenix.HTML.Format.text_to_html(@settings["announcement"], wrapper_tag: :h1, attributes: [class: "header arabic"]) %>
+        </div>
+      </div>
+
     </div>
   </div>
 

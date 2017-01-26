@@ -138,9 +138,10 @@ defmodule Timetable.PrayerController do
       #post settings
       title = prayerjamaah_new["title"]
       body = prayerjamaah_new["body"]
+      announcement = prayerjamaah_new["announcement"]
       hijrioffset = prayerjamaah_new["hijrioffset"]
       refreshtimeout = prayerjamaah_new["refreshtimeout"]
-      settings = %{"title": title, "body": body, "hijrioffset": hijrioffset, "refreshtimeout": refreshtimeout}
+      settings = %{"title": title, "body": body, "announcement": announcement, "hijrioffset": hijrioffset, "refreshtimeout": refreshtimeout}
       {:ok, filesettings} = File.open filesettings, [:write]
       IO.binwrite filesettings, Poison.encode!(settings)
       File.close filesettings

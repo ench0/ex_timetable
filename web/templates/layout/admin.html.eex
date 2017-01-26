@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/semantic.min.css") %>">
     <!--<link rel="stylesheet" href="<%= static_path(@conn, "/css/icon.css") %>">-->
     <!--<link rel="stylesheet" href="<%= static_path(@conn, "/css/timetable.css") %>">-->
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/changa.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/roboto.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/style.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/accordion.css") %>">

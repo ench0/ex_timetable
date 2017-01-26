@@ -428,7 +428,7 @@ h4.ui.header {
 }*/
 
 
-.ui.front table td, .ui.front table th, .grid p {
+.ui.front table td, .ui.front table th, .ui.equal.width.grid {
   font-size: 280%;
   font-family: 'Roboto', sans;
   font-weight: 300;
@@ -455,10 +455,16 @@ h4.ui.horizontal.divider.header,
   font-weight: 300;
   text-align: right;
 }
+.arabic {
+    font-family: 'Changa', sans;
+}
 .bottom p {
   font-size: 160%;
-  font-family: 'Changa', sans;
   font-weight: 300;
+  text-align: center;
+}
+.bottom h1 {
+  font-size: 300%;
   text-align: center;
 }
 .ui.front table td.warning, .ui.front table tr.warning {

@@ -106,7 +106,13 @@
             <div class="sixteen wide stretched column">
                 <div class="field">
                     <label>Text</label>
-                    <%= textarea(f, :body, rows: "3", value: @settings["body"], type: "tel", size: "1000", maxlength: "1000") %>
+                    <%= textarea(f, :body, rows: "4", value: @settings["body"], type: "tel", size: "1000", maxlength: "1000", class: "arabic") %>
+                </div>
+            </div>
+            <div class="sixteen wide stretched column">
+                <div class="field">
+                    <label>Announcement</label>
+                    <%= textarea(f, :announcement, rows: "2", value: @settings["announcement"], type: "tel", size: "100", maxlength: "100", class: "arabic") %>
                 </div>
             </div>
         </div>
