@@ -15,13 +15,15 @@
     <div class="ui equal height grid">
 
       <div class="sixteen wide middle aligned column">
-        <h4 class="ui horizontal divider header">
-          Islamic Cultural Centre of Ireland
-        </h4>
-        <div class="ui sizer vertical segment" id="date-time">
-          <p class="ui center aligned small header" id="date">date</p>
-          <!--<p class="ui center aligned small header" style="display:none;" id="days-year">doy</p>-->
-          <h1 class="ui center aligned huge header" id="time">time</h1>
+        <div class="ui top segment">
+          <h4 class="ui horizontal divider header">
+            Islamic Cultural Centre of Ireland
+          </h4>
+          <div class="ui sizer vertical segment" id="date-time">
+            <p class="ui center aligned small header" id="date">date</p>
+            <!--<p class="ui center aligned small header" style="display:none;" id="days-year">doy</p>-->
+            <h1 class="ui center aligned huge header" id="time">time</h1>
+          </div>
         </div>
       </div>
 

@@ -99,6 +99,8 @@ html {
 
 body {
   background: url("/images/timetable-bg.png") #ccffcc;
+}
+body#page {
   overflow:hidden;
 }
 .help-block {
@@ -444,7 +446,8 @@ h4.ui.horizontal.divider.header,
 .sixteen.wide.middle.aligned.column {
   background-color: rgba(255,255,255,.25)!important;
 }
-.ui.sizer.vertical.segment, .ui.table, .ui.bottom.segment {
+/*.ui.sizer.vertical.segment,*/
+.ui.table, .ui.bottom.segment, .ui.top.segment {
     background-color: rgba(255,255,255,.25)!important;
 }
 .ui.sizer.vertical.segment h1 {

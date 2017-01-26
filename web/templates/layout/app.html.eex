@@ -16,7 +16,7 @@
 
   </head>
 
-<body>
+<body id="page">
     <div id="refresh">
       <div class="fadein"></div>
       <div id="message-text" class="black">kiki</div>
