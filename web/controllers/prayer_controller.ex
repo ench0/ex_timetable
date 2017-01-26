@@ -232,7 +232,7 @@ defmodule Timetable.PrayerController do
     IO.inspect System.cmd("whoami", [])
     IO.inspect System.cmd("ls", ["-a"])
     #IO.inspect System.cmd("echo", ["hello"], [])
-    #IO.inspect System.cmd("sudo", ["reboot"], [])
+    IO.inspect System.cmd("sudo", ["reboot"], [])
 
     render conn
 
