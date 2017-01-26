@@ -24,15 +24,16 @@
     </div>
     <%= render @view_module, @view_template, assigns %>
 
-    <script src="<%= static_path(@conn, "/js/jquery.slim.min.js") %>"></script>
-    <script src="<%= static_path(@conn, "/js/moment.min.js") %>"></script>
-    <script src="<%= static_path(@conn, "/js/moment-timezone-with-data.js") %>"></script>
-    <script src="<%= static_path(@conn, "/js/moment-hijri.js") %>"></script>
+    <script src='<%= static_path(@conn, "/js/jquery.slim.min.js") %>'></script>
+    <script src='<%= static_path(@conn, "/js/moment.min.js") %>'></script>
+    <script src='<%= static_path(@conn, "/js/moment-timezone-with-data.js") %>'></script>
+    <script src='<%= static_path(@conn, "/js/moment-hijri.js") %>'></script>
 
-    <script src="<%= static_path(@conn, "/js/db/timetable.js") %>"></script>
-    <script src="<%= static_path(@conn, "/js/db/read-json.js") %>"></script>
-    <script src="<%= static_path(@conn, "/js/time.js") %>"></script>
-    <script src="<%= static_path(@conn, "/js/phoenix_live_reload.js") %>"></script>
+    <script src='<%= static_path(@conn, "/js/db/timetable.js") %>'></script>
+    <script src='<%= static_path(@conn, "/js/db/read-json.js") %>'></script>
+    <script src='<%= static_path(@conn, "/js/time.js") %>'></script>
+    <!--<script src='<%= static_path(@conn, "/js/phoenix_live_reload.js") %>'></script>
+    <script src='<%= static_path(@conn, "/js/socket.js") %>'></script>-->
 
 </body>
 </html>

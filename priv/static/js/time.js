@@ -249,6 +249,10 @@ if (!nextDay) var nextDay = 0;//if nextDay is not defined
 
 function screenRefresh(counter) {
 
+	if (counter > 9) counter = 0;
+
+	// console.log("screenRefresh! "+"refreshTimeout: "+refreshTimeout+"counter: "+counter);
+
 	document.getElementById("refresh").style = "display:block;";
 	var message = document.getElementById("message"+counter).innerText;
 
@@ -272,15 +276,17 @@ function screenRefresh(counter) {
 };
 
 var counter = 0;
-var refreshTimeout = (document.getElementById("refresh-timeout").innerText) * 1000 * 60;
-// console.log(refreshTimeout);
+var refreshTimeout = (document.getElementById("refresh-timeout").innerText) * 30 * 60;
+	// console.log("refreshTimeout: "+refreshTimeout);
 screenRefresh(counter);//start immediately
 
-var interval = function(){
-	// console.log(refreshTimeout);
+var count = function(){
+	// clearInterval(interval);
+	// console.log("count! "+"refreshTimeout: "+refreshTimeout+"counter: "+counter);
 	counter ++;
 	screenRefresh(counter);
-	if (counter == 10) counter = 0;
+	if (counter > 9) counter = 0;
 }
 
-setInterval(interval, refreshTimeout);
+interval = setInterval(count, refreshTimeout);
+// setInterval(interval(), refreshTimeout);
