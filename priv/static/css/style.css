@@ -428,7 +428,11 @@ h4.ui.header {
 }*/
 
 
-
+.ui table td, .ui table th, .grid p {
+  font-size: 280%;
+  font-family: 'Roboto', sans;
+  font-weight: 300;
+}
 .ui.horizontal.divider.header {
   margin:0 0 15px;
 }
@@ -443,28 +447,24 @@ h4.ui.horizontal.divider.header,
     background-color: rgba(255,255,255,.25)!important;
 }
 .ui.sizer.vertical.segment h1 {
-    color: rgba(255,255,255,.95)!important;
-}
-.ui table td, .ui table th, .grid p {
-  font-size: 240%;
-  font-family: 'Roboto', sans;
-  font-weight: 300;
+    color: rgba(255,255,255,.85)!important;
 }
 .bottom p, .ui.padded table td.arabic, .ui.padded table th.arabic, span.arabic {
-  font-size: 220%;
+  font-size: 160%;
   font-family: 'Changa', sans;
   font-weight: 300;
-  text-align: right
+  text-align: center;
 }
 .ui.table td.warning, .ui.table tr.warning {
     box-shadow: 0 0 0 #C9BA9B inset;
-    background: rgba(255,255,255,.75)!important;
+    background: rgba(255,255,255,.55)!important;
     color: #ff6600!important;
     text-shadow: 0 0 3px #000;
 }
-.ui.table th {
-  border-bottom: 5px solid #fff;
+.ui.table thead th {
+  border-bottom: 5px solid rgba(255,255,255,.45);
   background: rgba(255,255,255,.25)!important;
+  font-weight: 300;
 }
 .center.aligned.column {
   background: rgba(255,255,255,.25)!important;
