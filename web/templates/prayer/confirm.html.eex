@@ -7,13 +7,8 @@
 
 <section id="admin" class="ui segment container orange">
 
-    <h1>Are you sure?</h1>
-    <%= link to: prayer_path(@conn, :confirm), class: "ui button negative" do %>
-        <i class="submit icon"></i> Yes
-    <% end %>
-    <%= link to: prayer_path(@conn, :index), class: "ui button positive" do %>
-        <i class="remove icon"></i> No
-    <% end %>
+    <h1>Rebooting!</h1>
+
 </section>
 
 <br />

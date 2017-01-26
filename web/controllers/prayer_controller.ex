@@ -232,12 +232,18 @@ defmodule Timetable.PrayerController do
     IO.inspect System.cmd("whoami", [])
     IO.inspect System.cmd("ls", ["-a"])
     #IO.inspect System.cmd("echo", ["hello"], [])
-    IO.inspect System.cmd("sudo", ["reboot"], [])
 
     render conn
 
+
   end
 
+  def confirm(conn, _params) do
+    IO.inspect System.cmd("sudo", ["reboot"], [])
+    render conn
+        #|> put_flash(:extra, [Phoenix.HTML.Tag.content_tag(:div, [Phoenix.HTML.Tag.content_tag(:i, "", class: "info left aligned icon"), "Rebooted modified successfully."], class: "ui left aligned header")])
+        #|> redirect(to: prayer_path(conn, :confirm))
+  end
 
 
   def remove_zero(arg) do

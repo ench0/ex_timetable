@@ -40,6 +40,7 @@ defmodule Timetable.Router do
   scope "/prayers", Timetable do
     pipe_through [:secure, :admin_layout]
     get "/reboot", PrayerController, :reboot
+    get "/confirm", PrayerController, :confirm
     resources "/", PrayerController
   end
 
