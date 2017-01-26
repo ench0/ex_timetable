@@ -276,7 +276,7 @@ function screenRefresh(counter) {
 };
 
 var counter = 0;
-var refreshTimeout = (document.getElementById("refresh-timeout").innerText) * 30 * 60;
+var refreshTimeout = (document.getElementById("refresh-timeout").innerText) * 1000 * 60;
 	// console.log("refreshTimeout: "+refreshTimeout);
 screenRefresh(counter);//start immediately
 
