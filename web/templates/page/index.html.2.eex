@@ -11,23 +11,33 @@
 
 <div class="ui padded equal height grid basic segment">
 
+  <!--<div class="one wide purple column">
+  </div>-->
+
   <div class="sixteen wide stretched column">
     <div class="ui equal height grid">
 
-      <div class="sixteen wide middle aligned column">
-        <h4 class="ui horizontal divider header">
+<!--      <div class="sixteen wide yellow container">
+        <h4 class="ui horizontal divider yellow header">
+          <strong>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</strong>
+        </h4>
+      </div>
+-->
+
+      <div class="sixteen wide yellow middle aligned column">
+        <h4 class="ui horizontal grey divider header">
           Islamic Cultural Centre of Ireland
         </h4>
-        <div class="ui sizer vertical segment" id="date-time">
+        <div class="ui sizer inverted grey vertical segment" id="date-time">
           <p class="ui center aligned small header" id="date">date</p>
           <!--<p class="ui center aligned small header" style="display:none;" id="days-year">doy</p>-->
           <h1 class="ui center aligned huge header" id="time">time</h1>
         </div>
       </div>
 
-      <div class="sixteen wide middle aligned column">
+      <div class="sixteen wide yellow middle aligned column">
 
-        <table class="ui table"><!-- three column celled -->
+        <table class="ui inverted grey table"><!-- three column celled -->
           <thead>
             <tr>
               <th class="left aligned four wide">Prayer</th>
@@ -54,23 +64,23 @@
 
 
 
-      <div class="sixteen wide middle aligned column">
+      <div class="sixteen wide grey middle aligned column">
         <div class="ui equal width grid">
-          <div class="right aligned column">      
+          <div class="yellow right aligned column">      
             <p>Next prayer</p>
           </div>
-          <div class="center aligned column">      
+          <div class="grey center aligned column">      
             <p><span id="pending-name"></span></p>
           </div>
-          <div class="left aligned column">      
+          <div class="yellow left aligned column">      
             <p id="timetoprayer"></p>
             <!--<p id="timetofast"></p>-->
           </div>
         </div>
       </div>
 
-      <div class="sixteen wide middle aligned column">
-        <div class="ui bottom segment">
+      <div class="sixteen wide yellow middle aligned column">
+        <div class="ui grey inverted bottom segment">
           <h4 class="ui horizontal divider header">
             <i class="info icon"></i><%= @settings["title"] %>
           </h4>
@@ -81,6 +91,8 @@
     </div>
   </div>
 
+  <!--<div class="one wide purple column">
+  </div>-->
 </div>
 
 

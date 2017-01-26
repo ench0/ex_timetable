@@ -98,7 +98,7 @@ html {
 }*/
 
 body {
-  background: url("/images/timetable-bg.png") #ccffcc;
+  background: url("/images/timetable-bg.png") #290500;
 }
 .help-block {
     color: #d32f2f;
@@ -317,7 +317,7 @@ td form {
   font-weight: normal;
 }
 .ui.huge.header {
-  font-size: 10em;
+  font-size: 7em;
   font-family: 'PT Mono', monospace;
   font-family: 'Roboto', monospace;
   /*font-family: 'Cutive Mono', monospace;*/
@@ -326,7 +326,7 @@ td form {
   text-shadow: 0 0 7px #000;
 }
 
-/*.ui.padded table td, .ui.padded table th, .grid p {
+.ui.padded table td, .ui.padded table th, .grid p {
   font-size: 240%;
   font-family: 'Roboto', sans;
   font-weight: 300;
@@ -345,56 +345,48 @@ td form {
   margin: 0 0 10px;
 }
 
-.ui.inverted.segment>.ui.header {
-  color: #000;
-}*/
+.ui.table td.warning, .ui.table tr.warning {
+    box-shadow: 0 0 0 #C9BA9B inset;
+    background: #767676!important;
+    color: #FBBD08!important;
+}
 
 
 
-
-/*.ui.grid>.yellow.column, .ui.grid>.yellow.row {
-    background-color: rgba(255,255,255,.15)!important;
+.ui.grid>.yellow.column, .ui.grid>.yellow.row {
+    background-color: rgba(0,0,0,.15)!important;
     color: #FFF;
 }
 
 .ui.inverted.grey.segment {
-    background-color: rgba(255,255,255,.25)!important;
+    background-color: rgba(0,0,0,.25)!important;
     color: #FFF!important;
 }
 
-
-.ui.inverted.table th {
-  border-bottom: 5px solid #fff;
+.ui.inverted.grey.table {
+    background-color: rgba(0,0,0,.25)!important;
+    color: #FFF!important;
 }
 
 .ui.table td.warning, .ui.table tr.warning {
     box-shadow: 0 0 0 #C9BA9B inset;
-    background: rgba(255,255,255,.45)!important;
-    color: #FF6600!important;
-    text-shadow: 0 0 3px #000;
+    background: rgba(0,0,0,.25)!important;
+    color: #FBBD08!important;
 }
 
 .ui.grid>.grey.column {
-    background-color: rgba(255,255,255,.25)!important;
-    color: #FF6600;
-      text-shadow: 0 0 3px #000;
-
+    background-color: rgba(0,0,0,.25)!important;
+    color: #FBBD08;
 }
 .ui.grid>.yellow.right.column, .ui.grid>.yellow.left.column {
-    background-color: rgba(255,255,255,0)!important;
-    color: #FF6600;
-      text-shadow: 0 0 0 #000;
-
+    background-color: rgba(0,0,0,0)!important;
+    color: #FBBD08;
 }
 
-.ui.inverted.segment>p.ui.header,
-.ui.inverted.table th, .ui.inverted.table td,
+.ui.inverted.segment>.ui.header, .ui.inverted.table th, .ui.inverted.table td,
 .ui.grid>.yellow.column, .ui.grid>.yellow.row, .ui.inverted.grey.segment,
 .ui.grey.header  {
-  color: rgba(0,0,0,.95)!important;
-}
-.ui.inverted.segment>h1.ui.header {
-  color: rgba(255,255,255,.95)!important;
+  color: rgba(255,255,255,.75)!important;
 }
 p.ui.center.aligned.small.header {
   margin: 10px 0 0;
@@ -414,63 +406,28 @@ select.ui.dropdown,
   height: 2rem;
 }
 
+.ui.padded table tr.warning td {
+    text-shadow: 0 0 5px #fff;
+}
+.ui.padded table thead th {
+  border-bottom: 5px solid #fff;
+  /*margin-bottom:2px;*/
+}
+
 .ui.small.header, 
 h4.ui.header {
   padding-top: 0rem;
   font-variant: 'Roboto', sans;
   font-weight: 200;
 }
-
-.ui.inverted.grey.table,
-.ui.inverted.table th {
-    background-color: rgba(255,255,255,.25)!important;
-    color: #FFF!important;
+/*span.arabic.float {
+  color: rgba(255,255,255,.75);
+  margin-bottom: -50px;
+  position: absolute;
+  display: block;
+  top: 30px;
 }*/
 
-
-
-.ui.horizontal.divider.header {
-  margin:0 0 15px;
-}
-h4.ui.horizontal.divider.header,
-.ui.center.aligned.small.header {
-  font-size: 150%;
-}
-.sixteen.wide.middle.aligned.column {
-  background-color: rgba(255,255,255,.25)!important;
-}
-.ui.sizer.vertical.segment, .ui.table, .ui.bottom.segment {
-    background-color: rgba(255,255,255,.25)!important;
-}
-.ui.sizer.vertical.segment h1 {
-    color: rgba(255,255,255,.95)!important;
-}
-.ui table td, .ui table th, .grid p {
-  font-size: 240%;
-  font-family: 'Roboto', sans;
-  font-weight: 300;
-}
-.bottom p, .ui.padded table td.arabic, .ui.padded table th.arabic, span.arabic {
-  font-size: 220%;
-  font-family: 'Changa', sans;
-  font-weight: 300;
-  text-align: right
-}
-.ui.table td.warning, .ui.table tr.warning {
-    box-shadow: 0 0 0 #C9BA9B inset;
-    background: rgba(255,255,255,.75)!important;
-    color: #ff6600!important;
-    text-shadow: 0 0 3px #000;
-}
-.ui.table th {
-  border-bottom: 5px solid #fff;
-  background: rgba(255,255,255,.25)!important;
-}
-.center.aligned.column {
-  background: rgba(255,255,255,.25)!important;
-    color: #ff6600!important;
-    text-shadow: 0 0 3px #000;
-}
 /*refresh*/
 #refresh {
   z-index: 9999;
