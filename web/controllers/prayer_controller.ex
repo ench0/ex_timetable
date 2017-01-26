@@ -42,6 +42,7 @@ defmodule Timetable.PrayerController do
 # {:ok, filesettings} = File.open filesettings, [:write]
 
     # IO.puts "+++++"
+    # IO.inspect System.cmd("whoami", [])
     # IO.inspect File.read(filesettings)
     # IO.inspect is_bitstring day_in_year
     # IO.inspect String.starts_with? day_in_year, "0"
@@ -223,6 +224,19 @@ defmodule Timetable.PrayerController do
     end
   end
 
+
+
+
+  def reboot(conn, _params) do
+    IO.puts "+++++"
+    IO.inspect System.cmd("whoami", [])
+    IO.inspect System.cmd("ls", ["-a"])
+    #IO.inspect System.cmd("echo", ["hello"], [])
+    #IO.inspect System.cmd("sudo", ["reboot"], [])
+
+    render conn
+
+  end
 
 
 

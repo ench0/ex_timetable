@@ -49,6 +49,9 @@
         <div class="seven wide column">
           <h4 class="ui inverted header">About</h4>
           <p>Timetable for Jamaa' Prayers</p>
+          <%= link to: prayer_path(@conn, :reboot), method: :get, data: [confirm: "Are you sure?"], class: "ui negative" do %>
+              <i class="refresh icon"></i> Reboot
+          <% end %>
         </div>
       </div>
     </div>
