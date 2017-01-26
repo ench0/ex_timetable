@@ -428,7 +428,7 @@ h4.ui.header {
 }*/
 
 
-.ui table td, .ui table th, .grid p {
+.ui.front table td, .ui.front table th, .grid p {
   font-size: 280%;
   font-family: 'Roboto', sans;
   font-weight: 300;
@@ -449,7 +449,7 @@ h4.ui.horizontal.divider.header,
 .ui.sizer.vertical.segment h1 {
     color: rgba(255,255,255,.85)!important;
 }
-.ui.padded table td.arabic, .ui.padded table th.arabic, span.arabic {
+.ui.front.padded table td.arabic, .ui.front.padded table th.arabic, span.arabic {
   font-size: 260%;
   font-family: 'Changa', sans;
   font-weight: 300;
@@ -461,13 +461,13 @@ h4.ui.horizontal.divider.header,
   font-weight: 300;
   text-align: center;
 }
-.ui.table td.warning, .ui.table tr.warning {
+.ui.front table td.warning, .ui.front table tr.warning {
     box-shadow: 0 0 0 #C9BA9B inset;
     background: rgba(255,255,255,.45)!important;
     color: #ff6600!important;
     text-shadow: 0 0 3px #000;
 }
-.ui.table thead th {
+.ui.front table thead th {
   border-bottom: 5px solid rgba(255,255,255,.45);
   background: rgba(255,255,255,.15)!important;
   font-weight: 300;
