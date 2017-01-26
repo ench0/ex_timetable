@@ -449,7 +449,13 @@ h4.ui.horizontal.divider.header,
 .ui.sizer.vertical.segment h1 {
     color: rgba(255,255,255,.85)!important;
 }
-.bottom p, .ui.padded table td.arabic, .ui.padded table th.arabic, span.arabic {
+.ui.padded table td.arabic, .ui.padded table th.arabic, span.arabic {
+  font-size: 260%;
+  font-family: 'Changa', sans;
+  font-weight: 300;
+  text-align: right;
+}
+.bottom p {
   font-size: 160%;
   font-family: 'Changa', sans;
   font-weight: 300;
