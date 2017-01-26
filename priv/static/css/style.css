@@ -463,13 +463,13 @@ h4.ui.horizontal.divider.header,
 }
 .ui.table td.warning, .ui.table tr.warning {
     box-shadow: 0 0 0 #C9BA9B inset;
-    background: rgba(255,255,255,.55)!important;
+    background: rgba(255,255,255,.45)!important;
     color: #ff6600!important;
     text-shadow: 0 0 3px #000;
 }
 .ui.table thead th {
   border-bottom: 5px solid rgba(255,255,255,.45);
-  background: rgba(255,255,255,.25)!important;
+  background: rgba(255,255,255,.15)!important;
   font-weight: 300;
 }
 .center.aligned.column {
@@ -477,6 +477,11 @@ h4.ui.horizontal.divider.header,
     color: #ff6600!important;
     text-shadow: 0 0 3px #000;
 }
+
+
+
+
+
 /*refresh*/
 #refresh {
   z-index: 9999;
