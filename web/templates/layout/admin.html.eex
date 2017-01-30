@@ -55,6 +55,11 @@
           <%= link to: prayer_path(@conn, :reboot), method: :get, data: [confirm: "Are you sure?"], class: "ui negative" do %>
               <i class="refresh icon"></i> Reboot
           <% end %>
+          <br />
+          <%= link to: prayer_path(@conn, :shutdown), method: :get, data: [confirm: "Are you sure?"], class: "ui negative" do %>
+              <i class="refresh icon"></i> Shutdown
+          <% end %>
+          <br />
           <%= link to: prayer_path(@conn, :github), method: :get, data: [confirm: "Are you sure?"], class: "ui negative" do %>
               <i class="refresh icon"></i> Update
           <% end %>

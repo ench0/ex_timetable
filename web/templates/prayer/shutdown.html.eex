@@ -1,0 +1,19 @@
+<div class="ui basic segment container">
+    <div class="ui message blue info"><%= get_flash(@conn, :info) %></div>
+    <div class="ui message orange extra"><%= get_flash(@conn, :extra) %></div>
+    <div class="ui message red error"><%= get_flash(@conn, :error) %></div>
+</div>
+
+
+<section id="admin" class="ui segment container orange">
+
+    <h1>Are you sure?</h1>
+    <%= link to: prayer_path(@conn, :confirmshutdown), class: "ui button negative" do %>
+        <i class="submit icon"></i> Yes
+    <% end %>
+    <%= link to: prayer_path(@conn, :index), class: "ui button positive" do %>
+        <i class="remove icon"></i> No
+    <% end %>
+</section>
+
+<br />
