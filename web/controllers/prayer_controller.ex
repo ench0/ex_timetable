@@ -253,7 +253,7 @@ defmodule Timetable.PrayerController do
   end
 
   def confirmshutdown(conn, _params) do
-    IO.inspect System.cmd("sudo", ["shutdown", "now"], [])
+    IO.inspect System.cmd("sudo", ["poweroff"], [])
     render conn
         #|> put_flash(:extra, [Phoenix.HTML.Tag.content_tag(:div, [Phoenix.HTML.Tag.content_tag(:i, "", class: "info left aligned icon"), "Rebooted modified successfully."], class: "ui left aligned header")])
         #|> redirect(to: prayer_path(conn, :confirm))
