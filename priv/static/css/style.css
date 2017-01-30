@@ -321,12 +321,12 @@ td form {
 }
 .ui.huge.header {
   font-size: 10em;
-  font-family: 'PT Mono', monospace;
+  /*font-family: 'PT Mono', monospace;*/
   font-family: 'Roboto', monospace;
   /*font-family: 'Cutive Mono', monospace;*/
   /*font-family: 'Droid Sans Mono', monospace;*/
-  font-weight: 300;
-  text-shadow: 0 0 7px #000;
+  font-weight: 500;
+  text-shadow: 0 0 7px #ff6600;
 }
 
 /*.ui.padded table td, .ui.padded table th, .grid p {
@@ -451,7 +451,7 @@ h4.ui.horizontal.divider.header,
     background-color: rgba(255,255,255,.25)!important;
 }
 .ui.sizer.vertical.segment h1 {
-    color: rgba(255,255,255,.85)!important;
+    color: rgba(0,0,0,.85)!important;
 }
 .ui.front.padded table td.arabic, .ui.front.padded table th.arabic, span.arabic {
   font-size: 260%;
@@ -475,7 +475,7 @@ h4.ui.horizontal.divider.header,
     box-shadow: 0 0 0 #C9BA9B inset;
     background: rgba(255,255,255,.45)!important;
     color: #ff6600!important;
-    text-shadow: 0 0 3px #000;
+    text-shadow: 0 0 2px #000;
 }
 .ui.front table thead th {
   border-bottom: 5px solid rgba(255,255,255,.45);
