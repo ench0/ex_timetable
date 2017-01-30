@@ -45,12 +45,18 @@
           <div class="ui inverted link list">
             <a href="/" class="item">Home</a>
           </div>
+          <div class="ui inverted link list">
+            <%= link "Admin", to: prayer_path(@conn, :index), method: :get, class: "item" %>
+          </div>
         </div>
         <div class="seven wide column">
           <h4 class="ui inverted header">About</h4>
           <p>Timetable for Jamaa' Prayers</p>
           <%= link to: prayer_path(@conn, :reboot), method: :get, data: [confirm: "Are you sure?"], class: "ui negative" do %>
               <i class="refresh icon"></i> Reboot
+          <% end %>
+          <%= link to: prayer_path(@conn, :github), method: :get, data: [confirm: "Are you sure?"], class: "ui negative" do %>
+              <i class="refresh icon"></i> Update
           <% end %>
         </div>
       </div>

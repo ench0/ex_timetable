@@ -1,0 +1,14 @@
+<div class="ui basic segment container">
+    <div class="ui message blue info"><%= get_flash(@conn, :info) %></div>
+    <div class="ui message orange extra"><%= get_flash(@conn, :extra) %></div>
+    <div class="ui message red error"><%= get_flash(@conn, :error) %></div>
+</div>
+
+
+<section id="admin" class="ui segment container orange">
+
+    <h1>Updating!</h1>
+
+</section>
+
+<br />

@@ -246,7 +246,16 @@ defmodule Timetable.PrayerController do
   end
 
 
-  def remove_zero(arg) do
+  def github(conn, _params) do
+    IO.inspect System.cmd("git", ["pull"], [])
+    render conn
+        #|> put_flash(:extra, [Phoenix.HTML.Tag.content_tag(:div, [Phoenix.HTML.Tag.content_tag(:i, "", class: "info left aligned icon"), "Rebooted modified successfully."], class: "ui left aligned header")])
+        #|> redirect(to: prayer_path(conn, :confirm))
+  end
+
+
+
+  defp remove_zero(arg) do
     Regex.replace(~r/0/, arg, "")#removes "0" from HH
   end
 

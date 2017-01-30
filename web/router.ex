@@ -41,6 +41,7 @@ defmodule Timetable.Router do
     pipe_through [:secure, :admin_layout]
     get "/reboot", PrayerController, :reboot
     get "/confirm", PrayerController, :confirm
+    get "/github", PrayerController, :github
     resources "/", PrayerController
   end
 
