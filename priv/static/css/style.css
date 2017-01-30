@@ -434,7 +434,7 @@ h4.ui.header {
 .ui.front table td, .ui.front table th, .ui.equal.width.grid {
   font-size: 280%;
   font-family: 'Roboto', sans;
-  font-weight: 300;
+  font-weight: 500;
 }
 .ui.horizontal.divider.header {
   margin:0 0 15px;
@@ -456,7 +456,7 @@ h4.ui.horizontal.divider.header,
 .ui.front.padded table td.arabic, .ui.front.padded table th.arabic, span.arabic {
   font-size: 260%;
   font-family: 'Changa', sans;
-  font-weight: 300;
+  font-weight: 500;
   text-align: right;
 }
 .arabic {
@@ -464,7 +464,7 @@ h4.ui.horizontal.divider.header,
 }
 .bottom p {
   font-size: 160%;
-  font-weight: 300;
+  font-weight: 500;
   text-align: center;
 }
 .bottom h1 {
@@ -480,7 +480,7 @@ h4.ui.horizontal.divider.header,
 .ui.front table thead th {
   border-bottom: 5px solid rgba(255,255,255,.45);
   background: rgba(255,255,255,.15)!important;
-  font-weight: 300;
+  font-weight: 500;
 }
 .center.aligned.column {
   background: rgba(255,255,255,.25)!important;
